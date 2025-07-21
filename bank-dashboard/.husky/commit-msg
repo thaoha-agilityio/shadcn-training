@@ -1,0 +1,2 @@
+cd bank-dashboard
+npx --no -- commitlint --edit $1
