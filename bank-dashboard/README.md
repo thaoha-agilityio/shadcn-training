@@ -3,87 +3,74 @@
 ## Overview
 
 - This document concerns Shadcn practice. Build the BankDashboard web application.
-- Build E-commerce app
 
 ## Target
 
-- Get started with Expo and become familiar with the Expo SDK
-- Set up an Expo project & understand the directory structure.
-- Use Expo Go for testing without installing Xcode or Android Studio.
-- Work with Expo SDKs like Camera, Image Picker, Notification
-- Build a feature-rich app using multiple Expo APIs.
-- Optimized Performance & UI – FlatList optimization, animations, and styling best practices.
+- Understand the core concepts of Shadcn/ui
+- Using shadcn/ui with Next.js 15 and React 19.
+- Learn how to customize components and apply theming
+- Explore and Implement Components
+- Config ESLint, Prettier, Commitlint, CI/CD,...
 
 ## Technical Stack
 
-- React Native
-- Expo
-- Expo SDK
-- React Navigation
+- React 19
+- Next.js 15
 - Typescript
 - Zustand
 - React Query
 - Jest
-- Testing-library/react-native
-
-## Prerequisites
-
-Ensure sure you have completed the [React Native - Environment Setup](https://docs.expo.dev/get-started/set-up-your-environment/) instructions till "Creating a new application" step, before proceeding.
+- Testing-library/react
 
 ### Installation
 
 1. **Clone the repository:**
 
    ```bash
-   git@gitlab.asoft-python.com:thao.ha/react-native-training.git
+   git@gitlab.asoft-python.com:thao.ha/shadcn-training.git
    ```
 
 2. **Checkout into "dev" branch:**
 
    ```bash
-   git checkout develop
+   git checkout dev
    ```
 
 3. **Install dependencies:**
 
    ```bash
-   cd e-commerce
+   cd bank-dashboard
    ```
 
    ```bash
-   npm install
+   pnpm install
    ```
 
-4. **Start the app**
+4. **Start the project**
 
    ```bash
-   npx expo start
+   pnpm dev
    ```
 
 ## Requirements
 
-- [Link](https://docs.google.com/document/d/1QNIGQDidAIwE6AXCLPixA16liP-gVlssWqNjWuEj1Wo/edit?tab=t.0#heading=h.8wwjazh2a27g)
+- [Link](https://docs.google.com/document/d/1Fn5nqCEixRwtimhlBE8xyWIkkngiDjHPqyEoh5ci0vo/edit?tab=t.0)
 
 ## Features
 
-- Users can see Boarding screen
-- Users can log in
-- Users can see a list of products
-- Horizontal scrolling category
-- Users can see product details
-  - Swipe effect for image
-- Users can add a product to the cart
-- Users can update the quantity of products in the cart
-- Users can remove the product from the cart
-- Check out product
-- Users can see profile screen
-- Users can edit profile
-  - Using Camera and Image Picker
-- Users can log out
-- Apply more animation below:
-  - Switch theme with animation
-- Responsive layouts
-  - Double tap/ pinch to zoom the image of the product
-- Implementing a “fly to cart” animation
-  - Update an interactive onboarding screen
-- Animated FlatList
+- Users can log in and log out
+- Support dark mode
+- Users can see Dashboard page:
+  - Show My Cards
+  - Show Recent Transaction
+  - Show Quick Transfer
+  - Show charts (only UI)
+- Users can see Accounts page:
+  - Show statistical money (Total Saving, total balance,...)
+  - Show Transaction list
+  - Show card info
+  - Show All Transactions on table
+- Users can see Setting page:
+  - Edit my profile
+  - Show Preferences (only UI)
+  - Show Security (only UI)
