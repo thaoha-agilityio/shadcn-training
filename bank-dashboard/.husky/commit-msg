@@ -1,1 +1,2 @@
-echo "npx --no -- commitlint --edit \$1"
+cd bank-dashboard
+npx --no -- commitlint --edit $1
