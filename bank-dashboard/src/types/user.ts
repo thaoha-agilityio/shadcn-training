@@ -1,6 +1,6 @@
 import { CardInfo } from './card';
 
-export interface UserModal {
+export interface UserInfo {
   name: string;
   email: string;
   password?: string;
