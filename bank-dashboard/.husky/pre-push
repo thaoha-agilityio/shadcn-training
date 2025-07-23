@@ -1,1 +1,2 @@
 cd bank-dashboard
+npm test
