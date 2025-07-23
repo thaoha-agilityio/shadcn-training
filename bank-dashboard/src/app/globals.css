@@ -42,9 +42,9 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  --color-text-primary-2: var(--text-primary-2);
-  --color-text-primary-3: var(--text-primary-3);
-  --color-text-helper: var(--text-helper);
+  --color-primary-2: var(--text-primary-2);
+  --color-primary-3: var(--text-primary-3);
+  --color-helper: var(--text-helper);
   --color-title: var(--title);
   --color-tickle-pink: var(--tickle-pink);
   --color-disabled: var(--disabled);
@@ -56,6 +56,7 @@
   --color-bg-income: var(--bg-income);
   --color-bg-expense: var(--bg-expense);
   --color-bg-save: var(--bg-save);
+  --color-subtle: var(--subtle);
 }
 
 :root {
@@ -98,6 +99,7 @@
   --chart-3: #343C6A
   --chart-4: #FA00FF;
   --chart-5: #FC7900;
+  --subtle:#F5F7FA;
 
   --disabled: #B1B1B1;
   --polo-blue: #8BA3CB;
