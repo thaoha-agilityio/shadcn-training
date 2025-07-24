@@ -4,7 +4,7 @@ import { Label } from '@radix-ui/react-label';
 import { cva } from 'class-variance-authority';
 
 const inputVariants = cva(
-  'placeholder:text-helper dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring',
+  'placeholder:text-helper dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-lg border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring',
   {
     variants: {
       variant: {
@@ -17,7 +17,7 @@ const inputVariants = cva(
     },
   },
 );
-interface InputProps extends ComponentProps<'input'> {
+export interface InputProps extends ComponentProps<'input'> {
   errorMessage?: string;
   label?: string;
   startContent?: JSX.Element;
@@ -58,7 +58,11 @@ const Input = ({
         )}
         {...props}
       />
-      {!!endContent && <div>{endContent}</div>}
+      {!!endContent && (
+        <div className="absolute top-0 right-0 flex items-center">
+          {endContent}
+        </div>
+      )}
     </div>
 
     {!!errorMessage && (
