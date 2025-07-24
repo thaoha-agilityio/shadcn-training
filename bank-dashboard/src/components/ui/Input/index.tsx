@@ -1,5 +1,5 @@
 import { ComponentProps, JSX } from 'react';
-import { cn } from '@/src/lib/utils';
+import { cn } from '@/lib/utils';
 import { Label } from '@radix-ui/react-label';
 
 interface InputProps extends ComponentProps<'input'> {
