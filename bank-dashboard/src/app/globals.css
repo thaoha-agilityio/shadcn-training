@@ -57,6 +57,7 @@
   --color-bg-expense: var(--bg-expense);
   --color-bg-save: var(--bg-save);
   --color-subtle: var(--subtle);
+  --color-input-ring: var(--catskill-white);
 }
 
 :root {
@@ -110,6 +111,7 @@
   --save: #16DBCC;
   --dangerous: #FE5C73;
   --download: #123288;
+  --catskill-white: #DFEAF2;
 
   /* Custom background color*/
   --bg-balance: #FFF5D9;
