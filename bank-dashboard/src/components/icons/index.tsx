@@ -9,6 +9,7 @@ export * from './IncomeIcon';
 export * from './InvestIcon';
 export * from './LoansIcon';
 export * from './LogoIcon';
+export * from './NavBarIcon';
 export * from './NotificationIcon';
 export * from './PIcon';
 export * from './PrivilegesIcon';
