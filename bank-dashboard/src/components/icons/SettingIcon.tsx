@@ -6,13 +6,7 @@ export const SettingIcon = ({
   color = '#B1B1B1',
   ...props
 }: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={width}
-    height={height}
-    fill="none"
-    {...props}
-  >
+  <svg width={width} height={height} fill="none" viewBox="0 0 25 25" {...props}>
     <g>
       <path
         fill={color}
