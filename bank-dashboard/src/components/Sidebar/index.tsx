@@ -8,6 +8,7 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { LINKS } from '@/constants';
+import { cn } from '@/lib/utils';
 
 export function AppSidebar() {
   return (
@@ -23,7 +24,8 @@ export function AppSidebar() {
                   <SidebarMenuItem key={name} className="h-12">
                     <SidebarMenuButton asChild isActive={isActive}>
                       <a href={href} className="gap-5">
-                        <Icon />
+                        <Icon {...(isActive && { color: '#1814F3' })} />
+
                         <span>{name}</span>
                       </a>
                     </SidebarMenuButton>
