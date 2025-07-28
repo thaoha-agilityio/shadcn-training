@@ -1,6 +1,6 @@
 'use client';
 
-import { DataTable } from '../../DataTable';
+import { DataTable } from '../../common/DataTable';
 import { TransactionInfo } from '@/types';
 import { columns } from './columns';
 

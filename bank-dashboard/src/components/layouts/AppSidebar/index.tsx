@@ -9,7 +9,7 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/Sidebar';
 import { cn } from '@/lib/utils';
-import { LogoIcon } from '../icons';
+import { LogoIcon } from '@/components/icons';
 
 // Constants
 import { LINKS } from '@/constants';

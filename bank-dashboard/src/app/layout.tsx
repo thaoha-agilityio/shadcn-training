@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/Sidebar';
-import { AppSidebar } from '@/components/AppSidebar';
+import { AppSidebar } from '@/components/layouts';
 
 const inter = Inter({
   variable: '--font-inter',
