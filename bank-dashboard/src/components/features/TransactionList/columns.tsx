@@ -10,7 +10,7 @@ import { ArrowIcon } from '../../icons';
 import { Button } from '../../ui/Button';
 
 // Utils
-import { formatPrice } from '@/utils';
+import { formatCurrency } from '@/utils';
 
 export const columns: ColumnDef<TransactionInfo>[] = [
   {
@@ -70,7 +70,7 @@ export const columns: ColumnDef<TransactionInfo>[] = [
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue('amount'));
       const isPositiveAmount = amount >= 0;
-      const formatted = formatPrice(amount);
+      const formatted = formatCurrency(amount);
 
       return (
         <p

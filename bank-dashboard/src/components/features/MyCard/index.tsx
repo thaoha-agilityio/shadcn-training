@@ -3,7 +3,7 @@ import { ChipCardIcon, VisaIcon } from '@/components/icons';
 import { cn } from '@/lib/utils';
 
 // Utils
-import { formatCardNumber, formatPrice } from '@/utils';
+import { formatCardNumber, formatCurrency } from '@/utils';
 
 interface MyCardProps {
   isColor?: boolean;
@@ -34,7 +34,9 @@ export const MyCard = ({
       <div className="flex justify-between items-center px-5">
         <div>
           <p className={cn('text-xs', classTitle)}>Balance</p>
-          <p className="font-semibold text-md">{formatPrice(totalBalance)}</p>
+          <p className="font-semibold text-md">
+            {formatCurrency(totalBalance)}
+          </p>
         </div>
         <ChipCardIcon />
       </div>

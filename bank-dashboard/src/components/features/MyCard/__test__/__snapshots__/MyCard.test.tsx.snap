@@ -20,7 +20,7 @@ exports[`MyCard Component renders card with colored gradient theme 1`] = `
             <p
               class="font-semibold text-md"
             >
-              $1,234.56
+              $1,235
             </p>
           </div>
           <svg
@@ -127,7 +127,7 @@ exports[`MyCard Component renders card with colored gradient theme 1`] = `
           <p
             class="font-semibold text-md"
           >
-            $1,234.56
+            $1,235
           </p>
         </div>
         <svg

@@ -1,8 +1,10 @@
-export const formatPrice = (value: number) =>
-  new Intl.NumberFormat('en-US', {
+export const formatCurrency = (amount: number) => {
+  return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-  }).format(value);
+    maximumFractionDigits: 0, // Removes cents if not needed
+  }).format(amount);
+};
 
 export const formatCardNumber = (cardNumber: string) => {
   const clean = cardNumber.replace(/\D/g, ''); // remove non-digits
