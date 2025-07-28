@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
-import { AppSidebar } from '@/components/Sidebar';
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/Sidebar';
+import { AppSidebar } from '@/components/AppSidebar';
 
 const inter = Inter({
   variable: '--font-inter',
