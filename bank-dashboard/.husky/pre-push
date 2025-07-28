@@ -1,2 +1,2 @@
 cd bank-dashboard
-npm test
+pnpm test
