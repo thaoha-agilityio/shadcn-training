@@ -1,4 +1,5 @@
 export * from './AccountIcon';
+export * from './ArrowIcon';
 export * from './BalanceIcon';
 export * from './ChipCardIcon';
 export * from './CreditCardIcon';
