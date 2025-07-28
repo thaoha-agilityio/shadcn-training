@@ -12,4 +12,5 @@ export interface TransactionInfo {
   status: TRANSACTION_STATUS;
   senderId: string;
   receiverId: string;
+  type?: 'payment' | 'transfer';
 }

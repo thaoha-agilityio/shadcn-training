@@ -59,6 +59,8 @@
   --color-subtle: var(--subtle);
   --color-input-ring: var(--catskill-white);
   --color-polo-blue: var(--polo-blue);
+  --color-secondary: var(--secondary);
+  --color-positive: var(--positive);
 }
 
 :root {
@@ -71,14 +73,14 @@
   --popover-foreground: oklch(0.145 0 0);
   --primary: #1814F3;
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
+  --secondary: #EDF0F7;
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
+  --border: #E6EFF5;
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
   --sidebar: oklch(0.985 0 0);
@@ -113,12 +115,14 @@
   --dangerous: #FE5C73;
   --download: #123288;
   --catskill-white: #DFEAF2;
+  --positive: #16DBAA;
 
   /* Custom background color*/
   --bg-balance: #FFF5D9;
   --bg-income: #E7EDFF;
   --bg-expense: #FFE0EB;
   --bg-save: #DCFAF8;
+
 }
 
 .dark {
