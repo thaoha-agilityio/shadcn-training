@@ -58,6 +58,7 @@
   --color-bg-save: var(--bg-save);
   --color-subtle: var(--subtle);
   --color-input-ring: var(--catskill-white);
+  --color-polo-blue: var(--polo-blue);
 }
 
 :root {
