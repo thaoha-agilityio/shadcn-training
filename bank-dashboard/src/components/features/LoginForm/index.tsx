@@ -18,7 +18,8 @@ import { FORM_VALIDATION_MESSAGE } from '@/constants';
 import { clearErrorOnChange } from '@/utils';
 
 // Hooks
-import { useAuthSignIn } from '@/hooks';
+
+import { login } from '@/services';
 
 const formSchema = z.object({
   email: z
@@ -66,10 +67,8 @@ export const LoginForm = () => {
     };
   };
 
-  const { handleLogin } = useAuthSignIn();
-
   const onSubmit = async (values: LoginPayload) => {
-    await handleLogin(values);
+    await login(values);
 
     console.log(values);
   };

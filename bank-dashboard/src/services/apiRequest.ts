@@ -1,8 +1,11 @@
 // Constants
 import { ERROR_MESSAGES, API_URL } from '@/constants';
 
-type RequestOption = Omit<RequestInit, 'body'> & { body?: object };
-
+// type RequestOption = Omit<RequestInit, 'body'> & { body?: object };
+type RequestOption = Omit<RequestInit, 'body'> & {
+  body?: object;
+  baseUrl?: string; // 👈 New optional base URL
+};
 export type SuccessResponse<T> = { data: T; error: null };
 export type FailedResponse = { data: null; error: { message: string } };
 
@@ -22,7 +25,7 @@ class APIClient {
     url: string,
     init?: RequestOption,
   ): Promise<SuccessResponse<T> | FailedResponse> => {
-    const { method = 'GET', body, headers, ...rest } = init || {};
+    const { method = 'GET', body, headers, baseUrl, ...rest } = init || {};
 
     const hasBody = method === 'POST' || method === 'PUT';
 
@@ -41,9 +44,10 @@ class APIClient {
       }),
       ...rest,
     };
+    const finalUrl = `${baseUrl || API_URL}${url}`;
 
     try {
-      const res = await fetch(`${API_URL}${url}`, options);
+      const res = await fetch(finalUrl, options);
 
       if (!res.ok) return (await res.json()) as FailedResponse;
 
