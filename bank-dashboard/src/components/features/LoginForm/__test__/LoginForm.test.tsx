@@ -1,9 +1,13 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { act } from 'react';
 
 import { LoginForm } from '..';
+
+// Constants
 import { FORM_VALIDATION_MESSAGE } from '@/constants';
+
+// Mocks
 import { MOCK_AUTH } from '@/mocks';
-import { act } from 'react';
 
 describe('LoginForm Component', () => {
   const setup = () => {
