@@ -14,7 +14,7 @@ exports[`DatePicker component renders a DatePicker is correct 1`] = `
         data-state="closed"
         type="button"
       >
-        July 28th, 2025
+        July 29th, 2025
         <svg
           aria-hidden="true"
           class="lucide lucide-calendar ml-auto h-4 w-4 opacity-50"
@@ -58,7 +58,7 @@ exports[`DatePicker component renders a DatePicker is correct 1`] = `
       data-state="closed"
       type="button"
     >
-      July 28th, 2025
+      July 29th, 2025
       <svg
         aria-hidden="true"
         class="lucide lucide-calendar ml-auto h-4 w-4 opacity-50"
