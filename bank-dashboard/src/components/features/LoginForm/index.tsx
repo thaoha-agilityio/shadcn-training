@@ -68,7 +68,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <div className="border p-6 rounded-2xl">
+    <div className="max-w-[500px] w-full border p-6 rounded-2xl bg-white">
       <h2 className="text-center text-md font-medium">Login</h2>
       <Form {...form}>
         <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
