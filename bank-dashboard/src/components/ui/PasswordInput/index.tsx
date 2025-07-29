@@ -16,7 +16,7 @@ const PasswordInput = ({ ...props }: InputProps) => {
     <Input
       label="Password"
       endContent={
-        <Button onClick={handleShowHidePassword} variant="ghost">
+        <Button type="button" onClick={handleShowHidePassword} variant="ghost">
           {isShowPassword ? <EyeIcon /> : <EyeClosedIcon />}
         </Button>
       }
