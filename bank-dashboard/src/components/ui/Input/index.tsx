@@ -52,14 +52,14 @@ const Input = ({
           inputVariants({
             variant,
           }),
-          'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
+          'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive mt-1',
           errorMessage ? 'border-destructive' : '',
           className,
         )}
         {...props}
       />
       {!!endContent && (
-        <div className="absolute top-0 right-0 flex items-center">
+        <div className="absolute top-1 right-0 flex items-center">
           {endContent}
         </div>
       )}

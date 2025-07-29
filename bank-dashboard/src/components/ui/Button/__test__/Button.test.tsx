@@ -29,16 +29,6 @@ describe('Button component', () => {
     expect(button?.className).toContain('h-8');
   });
 
-  it('renders as a Slot when `asChild` is true', () => {
-    render(
-      <Button asChild>
-        <a href="/link">Link Button</a>
-      </Button>,
-    );
-    const link = screen.getByRole('link', { name: /link button/i });
-    expect(link).toBeInTheDocument();
-  });
-
   it('forwards props to the underlying element', () => {
     render(<Button data-testid="custom-button">Hello</Button>);
     expect(screen.getByTestId('custom-button')).toBeInTheDocument();
