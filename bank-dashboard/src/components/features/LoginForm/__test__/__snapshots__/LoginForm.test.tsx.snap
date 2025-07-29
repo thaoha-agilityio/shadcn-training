@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`LoginForm Component should renders correctly form 1`] = `
+<div>
+  <div
+    class="border p-6 rounded-2xl"
+  >
+    <h2
+      class="text-center text-md font-medium"
+    >
+      Login
+    </h2>
+    <form
+      class="flex flex-col gap-5"
+    >
+      <div>
+        <label
+          class="text-md text-text-helper pb-3"
+        >
+          Email
+        </label>
+        <div
+          class="relative flex flex-col gap-2"
+        >
+          <input
+            class="placeholder:text-helper dark:bg-input/30 flex h-9 w-full min-w-0 rounded-lg border px-3 py-1 text-base shadow-xs transition-[color,box-shadow] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring bg-transparent border-helper aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive"
+            data-slot="input"
+            name="email"
+            placeholder="Email address"
+            value=""
+          />
+        </div>
+      </div>
+      <div>
+        <label
+          class="text-md text-text-helper pb-3"
+        >
+          Password
+        </label>
+        <div
+          class="relative flex flex-col gap-2"
+        >
+          <input
+            class="placeholder:text-helper dark:bg-input/30 flex h-9 w-full min-w-0 rounded-lg border px-3 py-1 text-base shadow-xs transition-[color,box-shadow] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring bg-transparent border-helper aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive"
+            data-slot="input"
+            name="password"
+            placeholder="Password"
+            type="password"
+            value=""
+          />
+          <div
+            class="absolute top-0 right-0 flex items-center"
+          >
+            <button
+              class="cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:text-accent-foreground/50 dark:hover:bg-accent/50 h-9 px-4 py-2 has-[>svg]:px-3"
+              data-slot="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-eye-closed"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m15 18-.722-3.25"
+                />
+                <path
+                  d="M2 8a10.645 10.645 0 0 0 20 0"
+                />
+                <path
+                  d="m20 15-1.726-2.05"
+                />
+                <path
+                  d="m4 15 1.726-2.05"
+                />
+                <path
+                  d="m9 18 .722-3.25"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <button
+        class="cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 h-9 px-4 py-2 has-[>svg]:px-3 w-full"
+        data-slot="button"
+        type="submit"
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</div>
+`;
