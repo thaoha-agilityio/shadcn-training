@@ -10,4 +10,5 @@ export const DOMAIN = process.env.NEXT_PUBLIC_DOMAIN;
 
 export const API_ROUTE_ENDPOINT = {
   LOGIN: '/api/login',
+  LOGOUT: '/api/logout',
 };

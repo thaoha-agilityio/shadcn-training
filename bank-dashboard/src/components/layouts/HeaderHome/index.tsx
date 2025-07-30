@@ -1,3 +1,9 @@
+'use client';
+
+import { Search, LogOut } from 'lucide-react';
+import { useRouter, usePathname } from 'next/navigation';
+
+// Components
 import { ToggleTheme } from '@/components/features';
 import { Input } from '@/components/ui';
 import { Avatar } from '@/components/ui/Avatar';
@@ -8,14 +14,29 @@ import {
   PopoverTrigger,
 } from '@/components/ui/Popover';
 
-import { Search, LogOut } from 'lucide-react';
+// Services
+import { logout } from '@/services';
+
+// Constants
+import { API_ENDPOINT } from '@/constants';
+
+// Utils
+import { removeLeadingSlash } from '@/utils';
 
 export const HeaderHome = () => {
+  const router = useRouter();
+  const path = usePathname();
+
+  const handleLogout = async () => {
+    await logout();
+    router.replace(API_ENDPOINT.LOGIN);
+  };
+
   return (
     <div className="flex justify-between items-center pt-4 px-3 md:px-4">
       <div className="flex flex-1/2 justify-center md:justify-start">
-        <h1 className="text-title text-center text-2xl font-semibold">
-          Overview
+        <h1 className="text-title text-center text-2xl font-semibold capitalize">
+          {removeLeadingSlash(path)}
         </h1>
       </div>
 
@@ -36,7 +57,7 @@ export const HeaderHome = () => {
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-fit p-2">
-            <Button variant="ghost">
+            <Button variant="ghost" onClick={handleLogout}>
               <LogOut /> Logout
             </Button>
           </PopoverContent>
