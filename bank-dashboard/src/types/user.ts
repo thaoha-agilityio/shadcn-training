@@ -12,3 +12,12 @@ export interface UserInfo {
   country?: string;
   city?: string;
 }
+
+export type LoginPayload = Pick<UserInfo, 'email' | 'password'>;
+
+export interface LoginResponse {
+  accessToken: string;
+  user: Omit<UserInfo, 'password'>;
+}
+
+export type UserPayload = Omit<UserInfo, 'password' | 'email ' | 'id'>;

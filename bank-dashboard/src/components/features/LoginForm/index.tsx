@@ -4,6 +4,7 @@ import { Button } from '../../ui/Button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { ChangeEvent } from 'react';
+import { useRouter } from 'next/navigation';
 import { z } from 'zod';
 
 // Components
@@ -12,10 +13,13 @@ import { Form, FormField } from '@/components/ui/form';
 import { PasswordInput } from '@/components/ui/PasswordInput';
 
 // Constants
-import { FORM_VALIDATION_MESSAGE } from '@/constants';
+import { AUTH_ROUTES, FORM_VALIDATION_MESSAGE } from '@/constants';
 
 // Utils
 import { clearErrorOnChange } from '@/utils';
+
+// Services
+import { login } from '@/services';
 
 const formSchema = z.object({
   email: z
@@ -62,9 +66,10 @@ export const LoginForm = () => {
       clearErrorOnChange(name, errors, clearErrors);
     };
   };
-
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+  const router = useRouter();
+  const onSubmit = async (values: LoginPayload) => {
+    await login(values);
+    router.replace(AUTH_ROUTES.LOGIN);
   };
 
   return (
