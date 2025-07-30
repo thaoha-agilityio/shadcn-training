@@ -1,4 +1,8 @@
-import { MyCard } from '@/components/features';
+import {
+  MyCard,
+  RecentTransaction,
+  WeeklyTransactionChart,
+} from '@/components/features';
 import { FinanceIcon } from '@/components/icons';
 
 const props = {
@@ -23,7 +27,28 @@ export default function Home() {
 
         <div>
           <p className={titleStyle}>Recent Transaction</p>
+          <div className="flex flex-col gap-3 rounded-xl bg-card w-[231px] p-[15px] mt-5">
+            <RecentTransaction
+              description="Deposit from my"
+              date="25 January 2021"
+              amount={5400}
+            />
+            <RecentTransaction
+              description="Deposit from my"
+              date="25 January 2021"
+              amount={5400}
+            />
+            <RecentTransaction
+              description="Deposit from my"
+              date="25 January 2021"
+              amount={-5400}
+            />
+          </div>
         </div>
+      </div>
+      <div className="mt-5">
+        <p className={titleStyle}>Weekly Activity</p>
+        <WeeklyTransactionChart />
       </div>
     </div>
   );
