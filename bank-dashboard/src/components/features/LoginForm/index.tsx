@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { ChangeEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { z } from 'zod';
+import { toast } from 'sonner';
 
 // Components
 import { Input } from '@/components/ui';
@@ -20,7 +21,6 @@ import { clearErrorOnChange } from '@/utils';
 
 // Services
 import { login } from '@/services';
-import { toast } from 'sonner';
 
 const formSchema = z.object({
   email: z
