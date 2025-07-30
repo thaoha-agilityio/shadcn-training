@@ -33,7 +33,7 @@ export const HeaderHome = () => {
   };
 
   return (
-    <div className="flex justify-between items-center pt-4 px-3 md:px-4">
+    <div className="flex justify-between items-center py-4 px-3 md:px-4">
       <div className="flex flex-1/2 justify-center md:justify-start">
         <h1 className="text-title text-center text-2xl font-semibold capitalize">
           {removeLeadingSlash(path)}
