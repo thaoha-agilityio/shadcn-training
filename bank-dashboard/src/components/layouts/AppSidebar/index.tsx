@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Sidebar,
   SidebarContent,
@@ -13,43 +15,48 @@ import { LogoIcon } from '@/components/icons';
 
 // Constants
 import { LINKS } from '@/constants';
+import { usePathname } from 'next/navigation';
 
-export const AppSidebar = () => (
-  <Sidebar>
-    <SidebarHeader className="p-5 pb-0">
-      <LogoIcon />
-    </SidebarHeader>
-    <SidebarContent>
-      <SidebarGroup>
-        <SidebarGroupContent>
-          <SidebarMenu className="py-2">
-            {LINKS.map(({ name, href, icon, isActive }) => {
-              const Icon = icon;
+export const AppSidebar = () => {
+  const path = usePathname();
+  return (
+    <Sidebar>
+      <SidebarHeader className="p-5 pb-0">
+        <LogoIcon />
+      </SidebarHeader>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu className="py-2">
+              {LINKS.map(({ name, href, icon }) => {
+                const Icon = icon;
+                const isActive = path === href;
 
-              return (
-                <SidebarMenuItem key={name}>
-                  <SidebarMenuButton asChild isActive={isActive}>
-                    <a
-                      href={href}
-                      className={cn(
-                        'relative flex items-center gap-5 h-[60px] px-4 text-sm transition-colors',
-                        'text-muted-foreground hover:text-foreground',
-                        'data-[active=true]:text-primary data-[active=true]:font-medium',
-                        'before:absolute before:left-0 before:top-2 before:bottom-2',
-                        'before:w-[5px] before:rounded-r-md before:bg-primary',
-                        'data-[active=false]:before:content-none',
-                      )}
-                    >
-                      <Icon {...(isActive && { color: '#1814F3' })} />
-                      <span>{name}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              );
-            })}
-          </SidebarMenu>
-        </SidebarGroupContent>
-      </SidebarGroup>
-    </SidebarContent>
-  </Sidebar>
-);
+                return (
+                  <SidebarMenuItem key={name}>
+                    <SidebarMenuButton asChild isActive={isActive}>
+                      <a
+                        href={href}
+                        className={cn(
+                          'relative flex items-center gap-5 h-[60px] px-4 text-sm transition-colors',
+                          'text-muted-foreground hover:text-foreground',
+                          'data-[active=true]:text-primary data-[active=true]:font-medium',
+                          'before:absolute before:left-0 before:top-2 before:bottom-2',
+                          'before:w-[5px] before:rounded-r-md before:bg-primary',
+                          'data-[active=false]:before:content-none',
+                        )}
+                      >
+                        <Icon {...(isActive && { color: '#1814F3' })} />
+                        <span>{name}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
+  );
+};
