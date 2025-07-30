@@ -42,3 +42,11 @@ export const login = async (
     };
   }
 };
+
+export const logout = async () => {
+  try {
+    await apiClient.post(API_ROUTE_ENDPOINT.LOGOUT, { baseUrl: DOMAIN });
+  } catch (error) {
+    return error;
+  }
+};
