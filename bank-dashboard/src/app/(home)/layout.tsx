@@ -1,4 +1,5 @@
 import { AppSidebar } from '@/components/layouts';
+import { HeaderHome } from '@/components/layouts/HeaderHome';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/Sidebar';
 
 export default function HomeLayout({
@@ -7,12 +8,13 @@ export default function HomeLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main>
-      <SidebarProvider>
-        <AppSidebar />
-        <SidebarTrigger />
-        <section className="flex-1">{children}</section>
-      </SidebarProvider>
-    </main>
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarTrigger />
+      <div className="flex flex-col w-full">
+        <HeaderHome />
+        {children}
+      </div>
+    </SidebarProvider>
   );
 }

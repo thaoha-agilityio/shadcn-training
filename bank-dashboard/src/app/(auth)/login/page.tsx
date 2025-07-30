@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
 };
 const LoginPage = () => (
-  <div className="mx-auto flex-col h-screen flex justify-center items-center">
+  <div className="mx-auto px-8 flex-col h-[calc(100vh-36px)] flex justify-center items-center">
     <LoginForm />
   </div>
 );

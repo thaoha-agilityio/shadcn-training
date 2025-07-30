@@ -3,10 +3,9 @@
 import { Button } from '../../ui/Button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { z } from 'zod';
-import { toast } from 'sonner';
 
 // Components
 import { Input } from '@/components/ui';
@@ -56,8 +55,6 @@ export const LoginForm = () => {
     handleSubmit,
     control,
   } = form;
-  const router = useRouter();
-  const [isPending, setIsPending] = useState(false);
 
   const handleInputChange = (
     name: keyof LoginPayload,
@@ -69,28 +66,15 @@ export const LoginForm = () => {
       clearErrorOnChange(name, errors, clearErrors);
     };
   };
-
+  const router = useRouter();
   const onSubmit = async (values: LoginPayload) => {
-    setIsPending(true);
-    const { error } = await login(values);
-
-    if (error) {
-      toast.error('Login failed', {
-        description: error,
-      });
-
-      setIsPending(false);
-      return;
-    }
-
-    setIsPending(false);
+    await login(values);
     router.replace(AUTH_ROUTES.LOGIN);
   };
 
   return (
     <div className="max-w-[500px] w-full border p-6 rounded-2xl bg-white">
       <h2 className="text-center text-md font-medium">Login</h2>
-
       <Form {...form}>
         <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
           <FormField
@@ -125,7 +109,7 @@ export const LoginForm = () => {
             )}
           />
 
-          <Button type="submit" className="w-full" isLoading={isPending}>
+          <Button type="submit" className="w-full">
             Login
           </Button>
         </form>

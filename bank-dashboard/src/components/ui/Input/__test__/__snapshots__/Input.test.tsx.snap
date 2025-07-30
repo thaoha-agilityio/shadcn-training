@@ -10,7 +10,7 @@ exports[`Input Component Should render Input Component correctly 1`] = `
           class="relative flex flex-col gap-2"
         >
           <div
-            class="absolute top-4 left-6 flex items-center"
+            class="absolute top-5 left-6 flex items-center"
           >
             <svg
               aria-hidden="true"
@@ -50,7 +50,7 @@ exports[`Input Component Should render Input Component correctly 1`] = `
         class="relative flex flex-col gap-2"
       >
         <div
-          class="absolute top-4 left-6 flex items-center"
+          class="absolute top-5 left-6 flex items-center"
         >
           <svg
             aria-hidden="true"
