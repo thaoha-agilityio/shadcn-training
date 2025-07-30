@@ -5,17 +5,17 @@ import { LoginPayload, LoginResponse } from '@/types';
 import { apiClient } from './apiRequest';
 
 // Constants
-import { ERROR_MESSAGES } from '@/constants';
+import { API_ROUTE_ENDPOINT, DOMAIN, ERROR_MESSAGES } from '@/constants';
 
 export const login = async (
   payload: LoginPayload,
 ): Promise<LoginResponse | string> => {
   try {
-    const response = await apiClient.post('/api/login', {
+    const response = await apiClient.post(API_ROUTE_ENDPOINT.LOGIN, {
       body: {
         ...payload,
       },
-      baseUrl: 'http://localhost:3000',
+      baseUrl: DOMAIN,
     });
 
     return response.data as LoginResponse;

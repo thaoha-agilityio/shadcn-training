@@ -5,3 +5,9 @@ export const API_ENDPOINT = {
   USERS: '/users',
   TRANSACTIONS: '/transactions',
 };
+
+export const DOMAIN = process.env.NEXT_PUBLIC_DOMAIN;
+
+export const API_ROUTE_ENDPOINT = {
+  LOGIN: '/api/login',
+};

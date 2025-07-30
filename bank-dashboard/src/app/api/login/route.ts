@@ -1,9 +1,13 @@
-// app/api/login/route.ts
-
 import { NextRequest, NextResponse } from 'next/server';
 import { serialize } from 'cookie';
-import { apiClient } from '@/services'; // your login logic
-import { ERROR_MESSAGES } from '@/constants';
+
+// Services
+import { apiClient } from '@/services';
+
+// Constants
+import { API_ENDPOINT, ERROR_MESSAGES } from '@/constants';
+
+// Types
 import { LoginResponse } from '@/types';
 
 export async function POST(req: NextRequest) {
@@ -11,7 +15,7 @@ export async function POST(req: NextRequest) {
     const data = await req.json();
 
     // This calls your existing login function
-    const result = await apiClient.post('/login', { body: data });
+    const result = await apiClient.post(API_ENDPOINT.LOGIN, { body: data });
 
     if (!result || typeof result === 'string') {
       return NextResponse.json(
@@ -32,7 +36,7 @@ export async function POST(req: NextRequest) {
     });
 
     // ✅ Return a response with cookie header
-    const response = NextResponse.json({ success: true });
+    const response = NextResponse.json(result);
 
     response.headers.set('Set-Cookie', cookie);
 
