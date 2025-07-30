@@ -12,3 +12,7 @@ jest.mock('next/navigation', () => ({
     replace: jest.fn(),
   })),
 }));
+
+jest.mock('next-themes', () => ({
+  useTheme: jest.fn(),
+}));
