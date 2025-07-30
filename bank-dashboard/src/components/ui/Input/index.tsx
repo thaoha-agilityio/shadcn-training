@@ -41,7 +41,7 @@ const Input = ({
     )}
     <div className="relative flex flex-col gap-2">
       {!!startContent && (
-        <div className="absolute top-4 left-6 flex items-center">
+        <div className="absolute top-5 left-6 flex items-center">
           {startContent}
         </div>
       )}
