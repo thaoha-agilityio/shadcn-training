@@ -4,6 +4,14 @@ export const API_ENDPOINT = {
   LOGIN: '/login',
   USERS: '/users',
   TRANSACTIONS: '/transactions',
+  ACCOUNTS: '/accounts',
+  INVESTMENTS: '/investments',
+  CREDIT_CARDS: '/credit-cards',
+  LOANS: '/loans',
+  SERVICES: '/services',
+  PRIVILEGES: '/privileges',
+  SETTING: '/setting',
+  DASHBOARD: '/dashboard',
 };
 
 export const DOMAIN = process.env.NEXT_PUBLIC_DOMAIN;

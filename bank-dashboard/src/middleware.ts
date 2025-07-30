@@ -1,9 +1,14 @@
 // middleware.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { API_ENDPOINT } from './constants';
 
-const PUBLIC_ROUTES = ['/', '/login'];
-const PRIVATE_ROUTES = ['/dashboard'];
+const PUBLIC_ROUTES = ['/', API_ENDPOINT.LOGIN];
+const PRIVATE_ROUTES = [
+  API_ENDPOINT.DASHBOARD,
+  API_ENDPOINT.SETTING,
+  API_ENDPOINT.ACCOUNTS,
+];
 
 export function middleware(request: NextRequest) {
   const token = request.cookies.get('token')?.value;
@@ -20,12 +25,12 @@ export function middleware(request: NextRequest) {
 
   // Redirect unauthenticated users trying to access private routes
   if (isPrivateRoute && !isAuthenticated) {
-    return NextResponse.redirect(new URL('/login', request.url));
+    return NextResponse.redirect(new URL(API_ENDPOINT.LOGIN, request.url));
   }
 
   // Redirect authenticated users trying to access login/register
-  if (isPublicRoute && isAuthenticated && pathname === '/login') {
-    return NextResponse.redirect(new URL('/dashboard', request.url));
+  if (isPublicRoute && isAuthenticated && pathname === API_ENDPOINT.LOGIN) {
+    return NextResponse.redirect(new URL(API_ENDPOINT.DASHBOARD, request.url));
   }
 
   return NextResponse.next();
