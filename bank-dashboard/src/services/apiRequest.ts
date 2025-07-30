@@ -1,13 +1,12 @@
 // Constants
 import { ERROR_MESSAGES, API_URL } from '@/constants';
 
-// type RequestOption = Omit<RequestInit, 'body'> & { body?: object };
 type RequestOption = Omit<RequestInit, 'body'> & {
   body?: object;
   baseUrl?: string; // 👈 New optional base URL
 };
-export type SuccessResponse<T> = { data: T; error: null };
-export type FailedResponse = { data: null; error: { message: string } };
+export type SuccessResponse<T> = { data: T; error: null | string };
+export type FailedResponse = { data: null; error: string };
 
 class APIClient {
   private static _apiClient: APIClient;
@@ -57,11 +56,11 @@ class APIClient {
       };
     } catch (error) {
       if (error instanceof Error) {
-        return { error: { message: `Error : ${error.message}` }, data: null };
+        return { error: error.message, data: null };
       }
 
       return {
-        error: { message: ERROR_MESSAGES.ERROR_TO_FETCH_API },
+        error: ERROR_MESSAGES.ERROR_TO_FETCH_API,
         data: null,
       };
     }

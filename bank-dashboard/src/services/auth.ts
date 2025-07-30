@@ -2,27 +2,43 @@
 import { LoginPayload, LoginResponse } from '@/types';
 
 // Services
-import { apiClient } from './apiRequest';
+import { apiClient, FailedResponse, SuccessResponse } from './apiRequest';
 
 // Constants
 import { API_ROUTE_ENDPOINT, DOMAIN, ERROR_MESSAGES } from '@/constants';
 
 export const login = async (
   payload: LoginPayload,
-): Promise<LoginResponse | string> => {
+): Promise<SuccessResponse<LoginResponse> | FailedResponse> => {
   try {
-    const response = await apiClient.post(API_ROUTE_ENDPOINT.LOGIN, {
-      body: {
-        ...payload,
+    const { data, error } = await apiClient.post<LoginResponse>(
+      API_ROUTE_ENDPOINT.LOGIN,
+      {
+        body: {
+          ...payload,
+        },
+        baseUrl: DOMAIN,
       },
-      baseUrl: DOMAIN,
-    });
+    );
 
-    return response.data as LoginResponse;
+    if (error) {
+      return {
+        data: null,
+        error: error,
+      };
+    }
+
+    return {
+      data,
+      error: '',
+    };
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : ERROR_MESSAGES.LOGIN;
 
-    return errorMessage;
+    return {
+      data: null,
+      error: errorMessage,
+    };
   }
 };
