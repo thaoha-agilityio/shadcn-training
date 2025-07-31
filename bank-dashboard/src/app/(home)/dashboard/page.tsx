@@ -14,11 +14,11 @@ export default function Home() {
   const titleStyle = 'text-title text-lg font-semibold';
 
   return (
-    <div className="bg-secondary h-screen py-5 px-6">
+    <div className="bg-secondary md:min-h-screen py-5 px-6">
       <div className="flex flex-col md:flex-row justify-between gap-10">
         <div className="flex-2/3">
           <p className={titleStyle}>My Cards</p>
-          <div className="flex gap-4 overflow-x-auto flex-nowrap pt-4 scrollbar-hide sm:gap-10">
+          <div className="flex flex-nowrap overflow-x-auto pt-4 overflow-y-hidden gap-10">
             <MyCard isColor {...MY_CARD} />
             <MyCard {...MY_CARD} />
           </div>
