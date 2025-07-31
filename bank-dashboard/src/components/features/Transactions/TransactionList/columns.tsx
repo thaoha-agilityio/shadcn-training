@@ -6,8 +6,8 @@ import { ColumnDef } from '@tanstack/react-table';
 import { TransactionInfo } from '@/types';
 
 // Components
-import { ArrowIcon } from '../../icons';
-import { Button } from '../../ui/Button';
+import { ArrowIcon } from '@/components/icons';
+import { Button } from '@/components/ui/Button';
 
 // Utils
 import { formatCurrency } from '@/utils';

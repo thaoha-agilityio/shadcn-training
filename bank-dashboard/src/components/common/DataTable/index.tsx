@@ -32,7 +32,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-2xl border border-secondary px-5 py-4">
+    <div className="bg-card rounded-2xl border border-secondary px-5 py-4">
       <Table>
         <TableHeader className="hidden md:table-header-group">
           {table.getHeaderGroups().map((headerGroup) => (

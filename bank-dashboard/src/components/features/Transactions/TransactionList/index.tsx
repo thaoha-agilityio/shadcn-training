@@ -1,8 +1,8 @@
 'use client';
 
-import { DataTable } from '../../common/DataTable';
 import { TransactionInfo } from '@/types';
 import { columns } from './columns';
+import { DataTable } from '@/components/common/DataTable';
 
 interface TransactionListProps {
   data: TransactionInfo[];
