@@ -25,10 +25,10 @@ export const MyCard = ({
   return (
     <div
       className={cn(
-        ' w-[265px] h-[180px] rounded-2xl pt-4 ',
+        'min-w-[265px] h-[180px] rounded-2xl pt-4 ',
         isColor
           ? 'text-white bg-gradient-to-r from-[#4C49ED] to-[#0A06F4]'
-          : 'text-title bg-white border-2 border-catskill-white',
+          : 'text-title bg-card border-2 border-catskill-white',
       )}
     >
       <div className="flex justify-between items-center px-5">
@@ -48,7 +48,7 @@ export const MyCard = ({
       </div>
       <div
         className={cn(
-          'flex justify-between items-center h-[52px] py-4 border-t px-5 bg-white/20',
+          'flex justify-between items-center h-[52px] py-4 border-t px-5 bg-white/20 rounded-b-2xl',
           isColor ? 'border-white/10' : 'border-t-2 border-catskill-white',
         )}
       >

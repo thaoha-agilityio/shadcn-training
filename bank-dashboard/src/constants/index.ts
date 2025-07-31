@@ -1,4 +1,5 @@
 export * from './api';
+export * from './chart';
 export * from './regex';
 export * from './links';
 export * from './messages';
