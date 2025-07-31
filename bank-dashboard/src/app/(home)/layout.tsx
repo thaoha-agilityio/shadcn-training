@@ -11,7 +11,7 @@ export default function HomeLayout({
     <SidebarProvider>
       <AppSidebar />
       <SidebarTrigger />
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full  h-screen">
         <HeaderHome />
         {children}
       </div>

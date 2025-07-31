@@ -5,12 +5,14 @@ import { FinanceIcon, PaypalIcon, FinderIcon } from '@/components/icons';
 import { formatCurrency } from '@/utils';
 
 interface RecentTransactionProps {
+  index: number;
   description: string;
   date: string;
   amount: number;
 }
 
 export const RecentTransaction = ({
+  index,
   description,
   date,
   amount,
@@ -21,9 +23,8 @@ export const RecentTransaction = ({
     { icon: FinderIcon, bgColor: 'bg-save' },
   ];
 
-  const randomIndex = Math.floor(Math.random() * iconOptions.length);
-  const { icon: RandomIcon, bgColor } = iconOptions[randomIndex];
-
+  const { icon: SelectedIcon, bgColor } =
+    iconOptions[index % iconOptions.length];
   const isPositiveAmount = amount >= 0;
 
   return (
@@ -31,10 +32,12 @@ export const RecentTransaction = ({
       <div
         className={`w-10 h-10 rounded-full bg-${bgColor} flex justify-center items-center`}
       >
-        <RandomIcon />
+        <SelectedIcon />
       </div>
       <div>
-        <p className="text-[13px] font-medium">{description}</p>
+        <p className="text-[13px] font-medium truncate max-w-[100px]">
+          {description}
+        </p>
         <p className="text-xs text-helper">{date}</p>
       </div>
       <p

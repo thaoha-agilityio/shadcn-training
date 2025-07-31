@@ -8,50 +8,54 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  CartesianGrid,
 } from 'recharts';
 import { Card, CardContent } from '@/components/ui/Card';
 
-const data = [
-  { day: 'Sat', deposit: 230, withdraw: 470 },
-  { day: 'Sun', deposit: 110, withdraw: 330 },
-  { day: 'Mon', deposit: 260, withdraw: 330 },
-  { day: 'Tue', deposit: 370, withdraw: 480 },
-  { day: 'Wed', deposit: 220, withdraw: 140 },
-  { day: 'Thu', deposit: 240, withdraw: 410 },
-  { day: 'Fri', deposit: 310, withdraw: 400 },
-];
+// Constants
+import { WEEKLY_DATA } from '@/constants';
 
-export function WeeklyTransactionChart() {
-  return (
-    <Card className="rounded-2xl border bg-white shadow-md w-[487px] mt-4">
-      <CardContent>
-        <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={data} className="gap-6">
-            <XAxis dataKey="day" stroke="#718EBF" />
-            <YAxis stroke="#718EBF" />
-            <Tooltip />
-            <Legend
-              verticalAlign="top"
-              align="right"
-              iconType="circle"
-              iconSize={12}
-              wrapperStyle={{ paddingBottom: 20 }}
-            />
-            <Bar
-              dataKey="deposit"
-              fill="#16DBCC"
-              name="Deposit"
-              radius={[5, 5, 0, 0]}
-            />
-            <Bar
-              dataKey="withdraw"
-              fill="#1814F3"
-              name="Withdraw"
-              radius={[5, 5, 0, 0]}
-            />
-          </BarChart>
-        </ResponsiveContainer>
-      </CardContent>
-    </Card>
-  );
-}
+export const WeeklyTransactionChart = () => (
+  <Card className="rounded-3xl border text-xs bg-card shadow-md w-full mt-4">
+    <CardContent>
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart data={WEEKLY_DATA} className="gap-6" margin={{ left: -30 }}>
+          <CartesianGrid
+            stroke="#E5EAF2"
+            strokeDasharray="0"
+            vertical={false}
+          />
+          <XAxis dataKey="day" stroke="#718EBF" tickLine={false} />
+          <YAxis
+            stroke="#718EBF"
+            domain={[0, 500]}
+            ticks={[0, 100, 200, 300, 400, 500]}
+            axisLine={false} // ❌ remove vertical axis line
+          />
+          <Tooltip />
+          <Legend
+            verticalAlign="top"
+            align="right"
+            iconType="circle"
+            iconSize={12}
+            wrapperStyle={{ paddingBottom: 20 }}
+          />
+          <Bar
+            dataKey="withdraw"
+            fill="#1814F3"
+            name="Withdraw"
+            radius={[10, 10, 10, 10]}
+            barSize={10}
+          />
+          <Bar
+            dataKey="deposit"
+            fill="#16DBCC"
+            name="Deposit"
+            radius={[10, 10, 10, 10]}
+            barSize={10}
+          />
+        </BarChart>
+      </ResponsiveContainer>
+    </CardContent>
+  </Card>
+);
