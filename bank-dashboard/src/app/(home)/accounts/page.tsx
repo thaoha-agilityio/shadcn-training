@@ -1,16 +1,58 @@
+// Components
 import { StatByType } from '@/components/common/StatByType';
 import { MyCard, TransactionList } from '@/components/features';
 import { TransactionItem } from '@/components/features/Transactions/TransactionItem';
 import { Tabs } from '@/components/ui/Tabs';
-import { PRICE_TYPE } from '@/constants';
-import { MY_CARD } from '@/mocks';
-import { TRANSACTION_STATUS } from '@/types';
 
+// Constants
+import { PRICE_TYPE } from '@/constants';
+
+// Mocks
+import { MY_CARD } from '@/mocks';
+
+// Types
+import { TRANSACTION_STATUS, TransactionInfo } from '@/types';
+
+const data: TransactionInfo[] = [
+  {
+    transactionId: '1111111111',
+    amount: 100,
+    description: 'Spotify Subscription',
+    date: '28 Jan, 12.30 AM',
+    cardId: '12341234444',
+    status: TRANSACTION_STATUS.COMPLETED,
+    senderId: '123',
+    receiverId: '123',
+    type: 'payment',
+  },
+  {
+    transactionId: '2',
+    amount: 100,
+    description: 'string',
+    date: '28 Jan, 12.30 AM',
+    cardId: 'string',
+    status: TRANSACTION_STATUS.COMPLETED,
+    senderId: '123',
+    receiverId: '123',
+    type: 'payment',
+  },
+  {
+    transactionId: '3',
+    amount: 100,
+    description: 'string',
+    date: '28 Jan, 12.30 AM',
+    cardId: 'string',
+    status: TRANSACTION_STATUS.COMPLETED,
+    senderId: '123',
+    receiverId: '123',
+    type: 'payment',
+  },
+];
 const TABS_DATA = [
   {
     value: 'all_transactions',
     label: 'All Transactions',
-    content: <TransactionList data={[]} />,
+    content: <TransactionList data={data} />,
   },
   {
     value: 'income',
@@ -55,6 +97,7 @@ const Accounts = () => {
               date="25 January 2021"
               amount={5400}
               status={TRANSACTION_STATUS.PENDING}
+              cardNumber="1234567890"
             />
             <TransactionItem
               isLast
@@ -63,6 +106,7 @@ const Accounts = () => {
               date="25 January 2021"
               amount={5400}
               status={TRANSACTION_STATUS.PENDING}
+              cardNumber="1234567890"
             />
             <TransactionItem
               isLast
@@ -71,6 +115,7 @@ const Accounts = () => {
               date="25 January 2021"
               amount={-5400}
               status={TRANSACTION_STATUS.PENDING}
+              cardNumber="1234567890"
             />
           </div>
         </div>

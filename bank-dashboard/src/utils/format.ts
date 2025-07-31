@@ -19,3 +19,10 @@ export const formatCardNumber = (cardNumber: string) => {
 export const removeLeadingSlash = (path: string): string => {
   return path.startsWith('/') ? path.slice(1) : path;
 };
+
+export const maskCardNumber = (cardNumber: string) => {
+  if (!cardNumber) return '';
+
+  const str = cardNumber.toString();
+  return str.slice(0, 4) + ' ****';
+};

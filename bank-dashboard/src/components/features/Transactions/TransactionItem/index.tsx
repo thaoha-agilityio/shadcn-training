@@ -10,7 +10,7 @@ import {
 import { TRANSACTION_STATUS } from '@/types';
 
 // Utils
-import { formatCurrency } from '@/utils';
+import { formatCurrency, maskCardNumber } from '@/utils';
 
 interface TransactionItemProps {
   isLast?: boolean;
@@ -19,6 +19,7 @@ interface TransactionItemProps {
   date: string;
   amount: number;
   status?: TRANSACTION_STATUS;
+  cardNumber?: string;
 }
 
 export const TransactionItem = ({
@@ -28,6 +29,7 @@ export const TransactionItem = ({
   date,
   amount,
   status,
+  cardNumber = '',
 }: TransactionItemProps) => {
   const recentTransactionIcons = [
     { icon: FinanceIcon, bgColor: 'bg-balance' },
@@ -55,15 +57,18 @@ export const TransactionItem = ({
         <SelectedIcon />
       </div>
       <div>
-        <p className="text-[13px] font-medium truncate max-w-[100px]">
-          {description}
-        </p>
+        <p className="text-[13px] font-medium">{description}</p>
         <p className="text-xs text-helper">{date}</p>
       </div>
       {!!isLast && (
-        <p className="text-xs text-helper capitalize hidden md:block">
-          {status}
-        </p>
+        <>
+          <p className="text-xs text-helper capitalize hidden md:block">
+            {maskCardNumber(cardNumber)}
+          </p>
+          <p className="text-xs text-helper capitalize hidden md:block">
+            {status}
+          </p>
+        </>
       )}
       <p
         className={`font-medium text-[11px] ${

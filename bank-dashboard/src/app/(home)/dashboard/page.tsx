@@ -14,7 +14,7 @@ export default function Home() {
   const titleStyle = 'text-title text-lg font-semibold';
 
   return (
-    <div className="bg-secondary md:min-h-screen py-5 px-6">
+    <div className="bg-secondary h-screen py-5 px-6">
       <div className="flex flex-col md:flex-row justify-between gap-10">
         <div className="flex-2/3">
           <p className={titleStyle}>My Cards</p>

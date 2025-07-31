@@ -83,14 +83,19 @@ export const Tabs = ({
     >
       <TabsList className={extraStyle}>
         {tabs.map(({ value, label, onClick }) => (
-          <TabsTrigger key={value} value={value} onClick={onClick}>
+          <TabsTrigger
+            key={value}
+            value={value}
+            onClick={onClick}
+            className="pb-2"
+          >
             {label}
           </TabsTrigger>
         ))}
       </TabsList>
 
       {tabs.map(({ value, content }) => (
-        <TabsContent key={value} value={value}>
+        <TabsContent key={value} value={value} className="mt-2">
           {content}
         </TabsContent>
       ))}
