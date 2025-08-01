@@ -3,10 +3,10 @@
 exports[`StatByType component should render the StatByType correctly 1`] = `
 <div>
   <div
-    class="flex gap-3 p-5 rounded-[20px] w-[190px] bg-white shadow-md items-center"
+    class="flex gap-3 p-5 rounded-[20px] w-[140px] md:w-[190px] bg-card shadow-md items-center"
   >
     <div
-      class="bg-bg-balance w-[70px] h-[70px] rounded-full p-5"
+      class="bg-bg-balance w-[50px] h-[50px] md:w-[70px] md:h-[70px] rounded-full p-2 md:p-5"
     >
       <svg
         fill="none"

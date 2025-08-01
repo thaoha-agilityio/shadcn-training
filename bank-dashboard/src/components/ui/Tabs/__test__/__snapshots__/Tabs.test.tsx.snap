@@ -23,7 +23,7 @@ exports[`Tabs Component renders all page numbers correctly without ellipsis 1`] 
           <button
             aria-controls="radix-«r0»-content-profile"
             aria-selected="true"
-            class="relative data-[state=active]:text-primary inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 px-2 py-1 text-xs font-medium text-helper whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-1 data-[state=active]:after:bg-primary data-[state=active]:after:rounded-t-[4px]"
+            class="relative data-[state=active]:text-primary inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 px-2 py-1 text-xs font-medium text-helper whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-1 data-[state=active]:after:bg-primary data-[state=active]:after:rounded-t-[4px] pb-2"
             data-orientation="horizontal"
             data-radix-collection-item=""
             data-slot="tabs-trigger"
@@ -38,7 +38,7 @@ exports[`Tabs Component renders all page numbers correctly without ellipsis 1`] 
           <button
             aria-controls="radix-«r0»-content-security"
             aria-selected="false"
-            class="relative data-[state=active]:text-primary inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 px-2 py-1 text-xs font-medium text-helper whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-1 data-[state=active]:after:bg-primary data-[state=active]:after:rounded-t-[4px]"
+            class="relative data-[state=active]:text-primary inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 px-2 py-1 text-xs font-medium text-helper whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-1 data-[state=active]:after:bg-primary data-[state=active]:after:rounded-t-[4px] pb-2"
             data-orientation="horizontal"
             data-radix-collection-item=""
             data-slot="tabs-trigger"
@@ -53,7 +53,7 @@ exports[`Tabs Component renders all page numbers correctly without ellipsis 1`] 
         </div>
         <div
           aria-labelledby="radix-«r0»-trigger-profile"
-          class="flex-1 outline-none"
+          class="flex-1 outline-none mt-2"
           data-orientation="horizontal"
           data-slot="tabs-content"
           data-state="active"
@@ -68,7 +68,7 @@ exports[`Tabs Component renders all page numbers correctly without ellipsis 1`] 
         </div>
         <div
           aria-labelledby="radix-«r0»-trigger-security"
-          class="flex-1 outline-none"
+          class="flex-1 outline-none mt-2"
           data-orientation="horizontal"
           data-slot="tabs-content"
           data-state="inactive"
@@ -99,7 +99,7 @@ exports[`Tabs Component renders all page numbers correctly without ellipsis 1`] 
         <button
           aria-controls="radix-«r0»-content-profile"
           aria-selected="true"
-          class="relative data-[state=active]:text-primary inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 px-2 py-1 text-xs font-medium text-helper whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-1 data-[state=active]:after:bg-primary data-[state=active]:after:rounded-t-[4px]"
+          class="relative data-[state=active]:text-primary inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 px-2 py-1 text-xs font-medium text-helper whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-1 data-[state=active]:after:bg-primary data-[state=active]:after:rounded-t-[4px] pb-2"
           data-orientation="horizontal"
           data-radix-collection-item=""
           data-slot="tabs-trigger"
@@ -114,7 +114,7 @@ exports[`Tabs Component renders all page numbers correctly without ellipsis 1`] 
         <button
           aria-controls="radix-«r0»-content-security"
           aria-selected="false"
-          class="relative data-[state=active]:text-primary inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 px-2 py-1 text-xs font-medium text-helper whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-1 data-[state=active]:after:bg-primary data-[state=active]:after:rounded-t-[4px]"
+          class="relative data-[state=active]:text-primary inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 px-2 py-1 text-xs font-medium text-helper whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-1 data-[state=active]:after:bg-primary data-[state=active]:after:rounded-t-[4px] pb-2"
           data-orientation="horizontal"
           data-radix-collection-item=""
           data-slot="tabs-trigger"
@@ -129,7 +129,7 @@ exports[`Tabs Component renders all page numbers correctly without ellipsis 1`] 
       </div>
       <div
         aria-labelledby="radix-«r0»-trigger-profile"
-        class="flex-1 outline-none"
+        class="flex-1 outline-none mt-2"
         data-orientation="horizontal"
         data-slot="tabs-content"
         data-state="active"
@@ -144,7 +144,7 @@ exports[`Tabs Component renders all page numbers correctly without ellipsis 1`] 
       </div>
       <div
         aria-labelledby="radix-«r0»-trigger-security"
-        class="flex-1 outline-none"
+        class="flex-1 outline-none mt-2"
         data-orientation="horizontal"
         data-slot="tabs-content"
         data-state="inactive"

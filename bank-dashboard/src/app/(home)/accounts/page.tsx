@@ -8,51 +8,16 @@ import { Tabs } from '@/components/ui/Tabs';
 import { PRICE_TYPE } from '@/constants';
 
 // Mocks
-import { MY_CARD } from '@/mocks';
+import { MY_CARD, TRANSACTIONS } from '@/mocks';
 
 // Types
-import { TRANSACTION_STATUS, TransactionInfo } from '@/types';
+import { TRANSACTION_STATUS } from '@/types';
 
-const data: TransactionInfo[] = [
-  {
-    transactionId: '1111111111',
-    amount: 100,
-    description: 'Spotify Subscription',
-    date: '28 Jan, 12.30 AM',
-    cardId: '12341234444',
-    status: TRANSACTION_STATUS.COMPLETED,
-    senderId: '123',
-    receiverId: '123',
-    type: 'payment',
-  },
-  {
-    transactionId: '2',
-    amount: 100,
-    description: 'string',
-    date: '28 Jan, 12.30 AM',
-    cardId: 'string',
-    status: TRANSACTION_STATUS.COMPLETED,
-    senderId: '123',
-    receiverId: '123',
-    type: 'payment',
-  },
-  {
-    transactionId: '3',
-    amount: 100,
-    description: 'string',
-    date: '28 Jan, 12.30 AM',
-    cardId: 'string',
-    status: TRANSACTION_STATUS.COMPLETED,
-    senderId: '123',
-    receiverId: '123',
-    type: 'payment',
-  },
-];
 const TABS_DATA = [
   {
     value: 'all_transactions',
     label: 'All Transactions',
-    content: <TransactionList data={data} />,
+    content: <TransactionList data={TRANSACTIONS} />,
   },
   {
     value: 'income',
@@ -70,7 +35,7 @@ const Accounts = () => {
   const titleStyle = 'text-title text-lg font-semibold';
 
   return (
-    <div className="bg-secondary md:min-h-screen py-7 px-6">
+    <div className="py-7 px-6">
       <div className="flex justify-between flex-wrap gap-2 md:gap-6">
         <StatByType
           total={12750}

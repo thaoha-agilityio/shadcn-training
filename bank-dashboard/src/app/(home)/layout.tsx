@@ -13,7 +13,9 @@ export default function HomeLayout({
       <SidebarTrigger />
       <div className="flex flex-col w-full h-screen">
         <HeaderHome />
-        {children}
+        <div className="bg-secondary min-h-calc(100vh - 70px) md:h-screen ">
+          {children}
+        </div>
       </div>
     </SidebarProvider>
   );
