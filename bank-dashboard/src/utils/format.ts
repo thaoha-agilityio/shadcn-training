@@ -33,3 +33,27 @@ export const getInitials = (name: string): string =>
     .map((word) => word[0])
     .join('')
     .toUpperCase();
+
+export const formatDate = (isoString: string): string => {
+  const date = new Date(isoString);
+
+  const day = date.toLocaleString('en-US', { day: '2-digit' });
+  const month = date.toLocaleString('en-US', { month: 'short' });
+  const time = date.toLocaleString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true,
+  });
+
+  return `${day} ${month}, ${time.replace(':', '.')}`;
+};
+
+export const formatDateShort = (dateStr: string): string => {
+  const date = new Date(dateStr);
+
+  const day = date.toLocaleString('en-GB', { day: '2-digit' });
+  const month = date.toLocaleString('en-GB', { month: 'short' });
+  const year = date.getFullYear();
+
+  return `${day} ${month} ${year}`;
+};
