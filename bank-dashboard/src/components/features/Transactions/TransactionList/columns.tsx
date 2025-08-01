@@ -10,7 +10,7 @@ import { ArrowIcon } from '@/components/icons';
 import { Button } from '@/components/ui/Button';
 
 // Utils
-import { formatCurrency, maskCardNumber } from '@/utils';
+import { formatCurrency, formatDate, maskCardNumber } from '@/utils';
 
 export const columns: ColumnDef<TransactionInfo>[] = [
   {
@@ -18,7 +18,7 @@ export const columns: ColumnDef<TransactionInfo>[] = [
     header: 'Description',
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue('amount'));
-      const date = row.getValue('date') as string;
+      const date = row.getValue('createdAt') as string;
       const isPositiveAmount = amount >= 0;
 
       return (
@@ -37,10 +37,10 @@ export const columns: ColumnDef<TransactionInfo>[] = [
     },
   },
   {
-    accessorKey: 'transactionId',
+    accessorKey: 'id',
     header: 'TransactionId',
     cell: ({ row }) => (
-      <span className="hidden md:block">{row.getValue('transactionId')}</span>
+      <span className="hidden md:block">{row.getValue('id')}</span>
     ),
   },
   {
@@ -51,19 +51,21 @@ export const columns: ColumnDef<TransactionInfo>[] = [
     ),
   },
   {
-    accessorKey: 'cardId',
+    accessorKey: 'cardNumber',
     header: 'Card',
     cell: ({ row }) => (
       <span className="hidden md:block">
-        {maskCardNumber(row.getValue('cardId'))}
+        {maskCardNumber(row.getValue('cardNumber'))}
       </span>
     ),
   },
   {
-    accessorKey: 'date',
+    accessorKey: 'createdAt',
     header: 'Date',
     cell: ({ row }) => (
-      <span className="hidden md:block">{row.getValue('date')}</span>
+      <span className="hidden md:block">
+        {formatDate(row.getValue('createdAt'))}
+      </span>
     ),
   },
   {

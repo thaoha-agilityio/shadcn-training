@@ -1,3 +1,5 @@
+import { cookies } from 'next/headers';
+
 // Components
 import { AppSidebar, HeaderHome } from '@/components/layouts';
 
@@ -11,7 +13,12 @@ export default async function HomeLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { data: user } = await getUserLoggedIn();
+  const cookieStore = await cookies();
+  const token = cookieStore.get('token')?.value || '';
+  const userId = cookieStore.get('userId')?.value || '';
+
+  const { data: user } = await getUserLoggedIn(token, userId);
+
   const { avatar = '', firstName = '', lastName = '' } = user || {};
   const fullName = `${firstName} ${lastName}`;
 

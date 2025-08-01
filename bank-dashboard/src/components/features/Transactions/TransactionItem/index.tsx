@@ -10,7 +10,7 @@ import {
 import { TRANSACTION_STATUS } from '@/types';
 
 // Utils
-import { formatCurrency, maskCardNumber } from '@/utils';
+import { formatCurrency, formatDateShort, maskCardNumber } from '@/utils';
 
 interface TransactionItemProps {
   isLast?: boolean;
@@ -56,9 +56,9 @@ export const TransactionItem = ({
       >
         <SelectedIcon />
       </div>
-      <div>
+      <div className="w-[120px]">
         <p className="text-[13px] font-medium">{description}</p>
-        <p className="text-xs text-helper">{date}</p>
+        <p className="text-xs text-helper">{formatDateShort(date)}</p>
       </div>
       {!!isLast && (
         <>

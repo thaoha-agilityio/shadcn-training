@@ -1,24 +1,19 @@
 // Constants
 import { API_ENDPOINT, ERROR_MESSAGES } from '@/constants';
 
+// Types
+import { TransactionInfo } from '@/types';
+
 // Services
 import { apiClient, FailedResponse, SuccessResponse } from './apiRequest';
 
-// Types
-import { UserInfo } from '@/types';
-
-export const getUserLoggedIn = async (
-  token: string,
-  userId?: string,
-): Promise<SuccessResponse<UserInfo> | FailedResponse> => {
+export const getTransactionList = async (
+  page: number = 1,
+  limit: number,
+): Promise<SuccessResponse<TransactionInfo[]> | FailedResponse> => {
   try {
-    const { data, error } = await apiClient.get(
-      `${API_ENDPOINT.USERS}/${userId}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      },
+    const { data, error } = await apiClient.get<TransactionInfo[]>(
+      `${API_ENDPOINT.TRANSACTIONS}?_page=${page}&_limit=${limit}`,
     );
 
     if (error) {
@@ -29,7 +24,7 @@ export const getUserLoggedIn = async (
     }
 
     return {
-      data: data as UserInfo,
+      data: data || [],
       error: '',
     };
   } catch (error) {
