@@ -3,8 +3,8 @@ import {
   ExpensePieChart,
   MyCard,
   QuickTransfer,
-  RecentTransaction,
   WeeklyTransactionChart,
+  TransactionItem,
 } from '@/components/features';
 
 // TODO: Replace with real data
@@ -27,19 +27,19 @@ export default function Home() {
         <div className="flex-1/3">
           <p className={titleStyle}>Recent Transaction</p>
           <div className="flex flex-col gap-3 rounded-xl bg-card min-w-[231px] p-[15px] mt-5">
-            <RecentTransaction
+            <TransactionItem
               index={0}
               description="Deposit from my"
               date="25 January 2021"
               amount={5400}
             />
-            <RecentTransaction
+            <TransactionItem
               index={1}
               description="Deposit from my"
               date="25 January 2021"
               amount={5400}
             />
-            <RecentTransaction
+            <TransactionItem
               index={2}
               description="Deposit from my"
               date="25 January 2021"
