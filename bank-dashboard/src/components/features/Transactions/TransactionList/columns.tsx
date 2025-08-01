@@ -6,11 +6,11 @@ import { ColumnDef } from '@tanstack/react-table';
 import { TransactionInfo } from '@/types';
 
 // Components
-import { ArrowIcon } from '../../icons';
-import { Button } from '../../ui/Button';
+import { ArrowIcon } from '@/components/icons';
+import { Button } from '@/components/ui/Button';
 
 // Utils
-import { formatCurrency } from '@/utils';
+import { formatCurrency, maskCardNumber } from '@/utils';
 
 export const columns: ColumnDef<TransactionInfo>[] = [
   {
@@ -54,7 +54,9 @@ export const columns: ColumnDef<TransactionInfo>[] = [
     accessorKey: 'cardId',
     header: 'Card',
     cell: ({ row }) => (
-      <span className="hidden md:block">{row.getValue('cardId')}</span>
+      <span className="hidden md:block">
+        {maskCardNumber(row.getValue('cardId'))}
+      </span>
     ),
   },
   {
@@ -85,11 +87,16 @@ export const columns: ColumnDef<TransactionInfo>[] = [
   },
   {
     accessorKey: 'receipt',
-    header: 'Receipt',
+    header: '',
     cell: () => (
-      <Button className="hidden md:block text-xs rounded-4xl" variant="outline">
-        Download
-      </Button>
+      <div className="flex justify-end">
+        <Button
+          className="hidden md:block text-xs rounded-4xl"
+          variant="outline"
+        >
+          Download
+        </Button>
+      </div>
     ),
   },
 ];
