@@ -8,11 +8,11 @@ import { CardInfo } from '@/types';
 import { apiClient, FailedResponse, SuccessResponse } from './apiRequest';
 
 export const getCardDetails = async (
-  cardId: string,
+  userId: string,
 ): Promise<SuccessResponse<CardInfo> | FailedResponse> => {
   try {
-    const { data, error } = await apiClient.get(
-      `${API_ENDPOINT.CARDS}/${cardId}`,
+    const { data, error } = await apiClient.get<CardInfo[]>(
+      `${API_ENDPOINT.CARDS}?userId=${userId}`,
     );
 
     if (error) {
@@ -23,7 +23,7 @@ export const getCardDetails = async (
     }
 
     return {
-      data: data as CardInfo,
+      data: data && data.length > 0 ? (data[0] as CardInfo) : null,
       error: '',
     };
   } catch (error) {

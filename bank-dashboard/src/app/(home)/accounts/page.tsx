@@ -1,3 +1,5 @@
+import { cookies } from 'next/headers';
+
 // Components
 import { StatByType } from '@/components/common/StatByType';
 import { MyCard, TransactionList } from '@/components/features';
@@ -7,45 +9,54 @@ import { Tabs } from '@/components/ui/Tabs';
 // Constants
 import { PRICE_TYPE } from '@/constants';
 
-// Mocks
-import { MY_CARD, TRANSACTIONS } from '@/mocks';
+// Services
+import { getCardDetails, getTransactionList } from '@/services';
 
-// Types
-import { TRANSACTION_STATUS } from '@/types';
-
-const TABS_DATA = [
-  {
-    value: 'all_transactions',
-    label: 'All Transactions',
-    content: <TransactionList data={TRANSACTIONS} />,
-  },
-  {
-    value: 'income',
-    label: 'Income',
-    content: <div>Your profile content</div>,
-  },
-  {
-    value: 'expense',
-    label: 'Expense',
-    content: <div>Your profile content</div>,
-  },
-];
-
-const Accounts = () => {
+const Accounts = async () => {
   const titleStyle = 'text-title text-lg font-semibold';
+  const { data: transactions } = await getTransactionList(1, 3);
+  const cookieStore = await cookies();
+  const userId = cookieStore.get('userId')?.value || '';
+  const { data: cardDetails } = await getCardDetails(userId);
+  const {
+    cardNumber = '',
+    cardHolderName = '',
+    validThru = '',
+    balance = 0,
+    save = 0,
+    expense = 0,
+    income = 0,
+  } = cardDetails || {};
 
+  const TABS_DATA = [
+    {
+      value: 'all_transactions',
+      label: 'All Transactions',
+      content: <TransactionList cardNumber={cardNumber} />,
+    },
+    {
+      value: 'income',
+      label: 'Income',
+      content: <div>Your profile content</div>,
+    },
+    {
+      value: 'expense',
+      label: 'Expense',
+      content: <div>Your profile content</div>,
+    },
+  ];
   return (
     <div className="py-7 px-6">
       <div className="flex justify-between flex-wrap gap-2 md:gap-6">
         <StatByType
-          total={12750}
+          total={balance}
           label="My balance"
           type={PRICE_TYPE.BALANCE}
         />
-        <StatByType total={5600} label="Income" type={PRICE_TYPE.INCOME} />
-        <StatByType total={1230} label="Expense" type={PRICE_TYPE.EXPENSE} />
+        <StatByType total={income} label="Income" type={PRICE_TYPE.INCOME} />
+        <StatByType total={expense} label="Expense" type={PRICE_TYPE.EXPENSE} />
         <StatByType
-          total={5000}
+          total={save}
           label="Total saving"
           type={PRICE_TYPE.SAVING}
         />
@@ -55,33 +66,20 @@ const Accounts = () => {
         <div className="flex-2/3">
           <p className={titleStyle}>Last Transaction</p>
           <div className="flex flex-col gap-3 rounded-xl bg-card min-w-[231px] p-[15px] mt-6">
-            <TransactionItem
-              isLast
-              index={0}
-              description="Deposit from my"
-              date="25 January 2021"
-              amount={5400}
-              status={TRANSACTION_STATUS.PENDING}
-              cardNumber="1234567890"
-            />
-            <TransactionItem
-              isLast
-              index={1}
-              description="Deposit from my"
-              date="25 January 2021"
-              amount={5400}
-              status={TRANSACTION_STATUS.PENDING}
-              cardNumber="1234567890"
-            />
-            <TransactionItem
-              isLast
-              index={2}
-              description="Deposit from my"
-              date="25 January 2021"
-              amount={-5400}
-              status={TRANSACTION_STATUS.PENDING}
-              cardNumber="1234567890"
-            />
+            {transactions?.map(
+              ({ id, description, createdAt, amount, status }, index) => (
+                <TransactionItem
+                  isLast
+                  key={id}
+                  index={index}
+                  description={description}
+                  date={createdAt}
+                  amount={amount}
+                  status={status}
+                  cardNumber={cardNumber}
+                />
+              ),
+            )}
           </div>
         </div>
 
@@ -89,7 +87,13 @@ const Accounts = () => {
         <div>
           <p className={titleStyle}>My Cards</p>
           <div className="mt-5">
-            <MyCard isColor {...MY_CARD} />
+            <MyCard
+              isColor
+              username={cardHolderName}
+              totalBalance={balance}
+              validDate={validThru}
+              cardNumber={cardNumber}
+            />
           </div>
         </div>
       </div>

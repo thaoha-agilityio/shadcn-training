@@ -1,5 +1,3 @@
-import { TransactionInfo } from './transaction';
-
 export interface CardInfo {
   id: string;
   userId: string;
@@ -7,7 +5,8 @@ export interface CardInfo {
   income: number;
   expense: number;
   save: number;
+  cardNumber: string;
   cardHolderName: string;
   validThru: string;
-  transactions: TransactionInfo[];
+  transactionIds: string[];
 }

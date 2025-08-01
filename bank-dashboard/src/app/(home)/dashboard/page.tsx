@@ -7,10 +7,25 @@ import {
   TransactionItem,
 } from '@/components/features';
 
-// TODO: Replace with real data
-import { MY_CARD } from '@/mocks';
+// Services
+import { getCardDetails } from '@/services';
+import { getTransactionList } from '@/services/transaction';
+import { cookies } from 'next/headers';
 
-export default function Home() {
+export default async function Home() {
+  const cookieStore = await cookies();
+  const userId = cookieStore.get('userId')?.value || '';
+
+  const { data: cardDetails } = await getCardDetails(userId);
+  const {
+    cardHolderName = '',
+    cardNumber = '',
+    validThru = '',
+    balance = 0,
+  } = cardDetails || {};
+
+  const { data: transactions } = await getTransactionList(1, 3);
+
   const titleStyle = 'text-title text-lg font-semibold';
 
   return (
@@ -19,32 +34,36 @@ export default function Home() {
         <div className="flex-2/3">
           <p className={titleStyle}>My Cards</p>
           <div className="flex flex-nowrap overflow-x-auto pt-4 overflow-y-hidden gap-10">
-            <MyCard isColor {...MY_CARD} />
-            <MyCard {...MY_CARD} />
+            <MyCard
+              isColor
+              username={cardHolderName}
+              totalBalance={balance}
+              validDate={validThru}
+              cardNumber={cardNumber}
+            />
+            <MyCard
+              username={cardHolderName}
+              totalBalance={balance}
+              validDate={validThru}
+              cardNumber={cardNumber}
+            />
           </div>
         </div>
 
         <div className="flex-1/3">
           <p className={titleStyle}>Recent Transaction</p>
           <div className="flex flex-col gap-3 rounded-xl bg-card min-w-[231px] p-[15px] mt-5">
-            <TransactionItem
-              index={0}
-              description="Deposit from my"
-              date="25 January 2021"
-              amount={5400}
-            />
-            <TransactionItem
-              index={1}
-              description="Deposit from my"
-              date="25 January 2021"
-              amount={5400}
-            />
-            <TransactionItem
-              index={2}
-              description="Deposit from my"
-              date="25 January 2021"
-              amount={-5400}
-            />
+            {transactions?.map(
+              ({ id, description, createdAt, amount }, index) => (
+                <TransactionItem
+                  key={id}
+                  index={index}
+                  description={description}
+                  date={createdAt}
+                  amount={amount}
+                />
+              ),
+            )}
           </div>
         </div>
       </div>
