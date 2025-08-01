@@ -1,11 +1,13 @@
+import { TransactionInfo } from './transaction';
+
 export interface CardInfo {
-  cardId: string;
+  id: string;
   userId: string;
   balance: number;
   income: number;
   expense: number;
   save: number;
-  cardHolder: string;
+  cardHolderName: string;
   validThru: string;
-  maskedCardNumber: string;
+  transactions: TransactionInfo[];
 }

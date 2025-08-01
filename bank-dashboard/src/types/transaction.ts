@@ -5,10 +5,10 @@ export enum TRANSACTION_STATUS {
 }
 
 export interface TransactionInfo {
-  transactionId: string;
+  id: string;
   amount: number;
   description: string;
-  date: string;
+  createdAt: string;
   cardId: string;
   status: TRANSACTION_STATUS;
   senderId: string;

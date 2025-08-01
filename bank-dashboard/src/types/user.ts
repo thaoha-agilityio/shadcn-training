@@ -1,6 +1,9 @@
 import { CardInfo } from './card';
 
 export interface UserInfo {
+  id: string;
+  firstName: string;
+  lastName: string;
   name: string;
   email: string;
   password?: string;

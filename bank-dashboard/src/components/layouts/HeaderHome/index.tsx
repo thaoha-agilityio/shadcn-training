@@ -21,9 +21,14 @@ import { logout } from '@/services';
 import { API_ENDPOINT } from '@/constants';
 
 // Utils
-import { removeLeadingSlash } from '@/utils';
+import { getInitials, removeLeadingSlash } from '@/utils';
 
-export const HeaderHome = () => {
+interface HeaderHomeProps {
+  avatar: string;
+  fullName: string;
+}
+
+export const HeaderHome = ({ avatar, fullName }: HeaderHomeProps) => {
   const router = useRouter();
   const path = usePathname();
 
@@ -53,7 +58,11 @@ export const HeaderHome = () => {
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="ghost" className="px-0">
-              <Avatar contentFallback="SC" extraStyle="w-10 h-10" />
+              <Avatar
+                contentFallback={getInitials(fullName)}
+                src={avatar}
+                extraStyle="w-10 h-10"
+              />
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-fit p-2">

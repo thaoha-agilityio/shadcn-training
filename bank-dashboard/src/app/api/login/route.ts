@@ -24,7 +24,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { accessToken } = result.data as LoginResponse;
+    const { accessToken, user } = result.data as LoginResponse;
+    const userId = user.id;
 
     // ✅ Set secure, HTTP-only cookie
     const cookie = serialize('token', accessToken, {
@@ -35,10 +36,18 @@ export async function POST(req: NextRequest) {
       maxAge: 60 * 60 * 24, // 1 day
     });
 
+    const userIdCookie = serialize('userId', String(userId), {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      path: '/',
+      maxAge: 60 * 60 * 24,
+    });
+
     // ✅ Return a response with cookie header
     const response = NextResponse.json(result);
 
-    response.headers.set('Set-Cookie', cookie);
+    response.headers.set('Set-Cookie', [cookie, userIdCookie].join(', '));
 
     return response;
   } catch (error) {
