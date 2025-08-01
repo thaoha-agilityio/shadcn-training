@@ -26,3 +26,10 @@ export const maskCardNumber = (cardNumber: string) => {
   const str = cardNumber.toString();
   return str.slice(0, 4) + ' ****';
 };
+
+export const getInitials = (name: string): string =>
+  name
+    .split(' ')
+    .map((word) => word[0])
+    .join('')
+    .toUpperCase();
