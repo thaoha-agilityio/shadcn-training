@@ -7,12 +7,18 @@ import { TransactionInfo } from '@/types';
 // Services
 import { apiClient, FailedResponse, SuccessResponse } from './apiRequest';
 
+type SuccessResponseWithHeaders = SuccessResponse<TransactionInfo[]> & {
+  totalCount?: number;
+};
+
 export const getTransactionList = async (
   page: number = 1,
   limit: number,
-): Promise<SuccessResponse<TransactionInfo[]> | FailedResponse> => {
+): Promise<
+  SuccessResponseWithHeaders | (FailedResponse & { totalCount?: number })
+> => {
   try {
-    const { data, error } = await apiClient.get<TransactionInfo[]>(
+    const { data, error, headers } = await apiClient.get<TransactionInfo[]>(
       `${API_ENDPOINT.TRANSACTIONS}?_page=${page}&_limit=${limit}`,
     );
 
@@ -20,12 +26,14 @@ export const getTransactionList = async (
       return {
         data: null,
         error: error,
+        totalCount: 0,
       };
     }
 
     return {
       data: data || [],
       error: '',
+      totalCount: Number(headers?.get('X-Total-Count')),
     };
   } catch (error) {
     const errorMessage =
@@ -36,6 +44,7 @@ export const getTransactionList = async (
     return {
       data: null,
       error: errorMessage,
+      totalCount: 0,
     };
   }
 };

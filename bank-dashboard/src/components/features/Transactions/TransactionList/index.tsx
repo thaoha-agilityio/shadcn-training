@@ -1,16 +1,22 @@
 // Components
-import { columns } from './columns';
-import { DataTable } from '@/components/common/DataTable';
+import { Transactions } from './Transactions';
 
 // Services
 import { getTransactionList } from '@/services';
 
 type TransactionListProps = {
   cardNumber: string;
+  currentPage: number;
 };
 
-export async function TransactionList({ cardNumber }: TransactionListProps) {
-  const { data: transactions } = await getTransactionList(1, 5);
+export async function TransactionList({
+  cardNumber,
+  currentPage,
+}: TransactionListProps) {
+  const { data: transactions, totalCount = 0 } = await getTransactionList(
+    currentPage,
+    5,
+  );
 
   const transactionsWithCardNumber = (transactions || []).map((tx) => ({
     ...tx,
@@ -18,6 +24,10 @@ export async function TransactionList({ cardNumber }: TransactionListProps) {
   }));
 
   return (
-    <DataTable columns={columns} data={transactionsWithCardNumber || []} />
+    <Transactions
+      cardNumber={cardNumber}
+      transactions={transactionsWithCardNumber}
+      totalCount={totalCount}
+    />
   );
 }
