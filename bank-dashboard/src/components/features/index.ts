@@ -1,4 +1,5 @@
 export * from './BalanceHistoryChart';
+export * from './EditProfileForm';
 export * from './ExpenseChart';
 export * from './LoginForm';
 export * from './Transactions/TransactionList';

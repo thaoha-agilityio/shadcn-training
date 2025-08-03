@@ -4,6 +4,7 @@ export * from './BalanceIcon';
 export * from './ChipCardIcon';
 export * from './CreditCardIcon';
 export * from './DollarIcon';
+export * from './EditIcon';
 export * from './ExpenseIcon';
 export * from './FinanceIcon';
 export * from './FinderIcon';
