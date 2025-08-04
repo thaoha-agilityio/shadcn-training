@@ -62,6 +62,7 @@
   --color-polo-blue: var(--polo-blue);
   --color-secondary: var(--secondary);
   --color-positive: var(--positive);
+  --color-heading: var(--heading);
 }
 
 :root {
@@ -98,6 +99,7 @@
   --text-primary-3: #2D60FF;
   --text-helper: #718EBF;
   --title:#343C6A;
+  --heading: #333B69;
 
   --chart-1: #1814F3;
   --chart-2: #16DBCC;
@@ -160,6 +162,7 @@
   --sidebar-ring: oklch(0.556 0 0);
 
   --title:#F5F7FA;
+  --heading: #F5F7FA;
 }
 
 @layer base {

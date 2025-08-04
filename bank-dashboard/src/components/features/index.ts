@@ -8,3 +8,5 @@ export * from './MyCard';
 export * from './ToggleTheme';
 export * from './WeeklyActivityChart';
 export * from './QuickTransfer';
+export * from './SettingTabs/PreferencesTab';
+export * from './SettingTabs/SecurityTab';
