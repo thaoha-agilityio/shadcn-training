@@ -1,3 +1,7 @@
+'use server';
+
+import { revalidateTag } from 'next/cache';
+
 // Constants
 import { API_ENDPOINT, ERROR_MESSAGES } from '@/constants';
 
@@ -5,7 +9,7 @@ import { API_ENDPOINT, ERROR_MESSAGES } from '@/constants';
 import { apiClient, FailedResponse, SuccessResponse } from './apiRequest';
 
 // Types
-import { UserInfo } from '@/types';
+import { UserInfo, UserPayload } from '@/types';
 
 export const getUserLoggedIn = async (
   token: string,
@@ -17,6 +21,9 @@ export const getUserLoggedIn = async (
       {
         headers: {
           Authorization: `Bearer ${token}`,
+        },
+        next: {
+          tags: [API_ENDPOINT.USERS],
         },
       },
     );
@@ -38,6 +45,47 @@ export const getUserLoggedIn = async (
         ? error.message
         : ERROR_MESSAGES.ERROR_TO_FETCH_API;
 
+    return {
+      data: null,
+      error: errorMessage,
+    };
+  }
+};
+
+export const updateUser = async (
+  token: string,
+  userId: string,
+  payload: UserPayload,
+): Promise<SuccessResponse<UserInfo> | FailedResponse> => {
+  try {
+    const { data, error } = await apiClient.patch(
+      `${API_ENDPOINT.USERS}/${userId}`,
+      {
+        body: payload,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+
+    if (error) {
+      return {
+        data: null,
+        error: error,
+      };
+    }
+
+    revalidateTag(API_ENDPOINT.USERS);
+
+    return {
+      data: data as UserInfo,
+      error: '',
+    };
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error
+        ? error.message
+        : ERROR_MESSAGES.ERROR_TO_FETCH_API;
     return {
       data: null,
       error: errorMessage,

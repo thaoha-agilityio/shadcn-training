@@ -3,7 +3,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useState } from 'react';
+import { toast } from 'sonner';
 
 // Components
 import { Input } from '@/components/ui';
@@ -18,8 +19,13 @@ import { FORM_VALIDATION_MESSAGE } from '@/constants';
 // Types
 import { clearErrorOnChange } from '@/utils';
 
+// Services
+import { UserInfo, UserPayload } from '@/types';
+
+// Services
+import { updateUser, uploadImageToImgbb } from '@/services';
+
 const formSchema = z.object({
-  email: z.string().nonempty(FORM_VALIDATION_MESSAGE.REQUIRED('Email')),
   firstName: z
     .string()
     .nonempty(FORM_VALIDATION_MESSAGE.REQUIRED('First Name')),
@@ -29,19 +35,47 @@ const formSchema = z.object({
   presentAddress: z.string(),
   city: z.string(),
   country: z.string(),
-  password: z.string(),
   dateOfBirth: z
     .date()
     .refine((date) => date <= new Date() && date >= new Date('1900-01-01')),
   avatar: z.string().optional(),
 });
 
-export const EditProfileForm = () => {
+interface EditProfileFormProps {
+  user?: UserInfo | null;
+  token?: string;
+}
+
+export const EditProfileForm = ({ user, token = '' }: EditProfileFormProps) => {
+  const {
+    id = '',
+    email = '',
+    firstName = '',
+    lastName = '',
+    avatar = '',
+    dateOfBirth = '',
+    permanentAddress = '',
+    postalCode = '',
+    presentAddress = '',
+    city = '',
+    country = '',
+  } = user || {};
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     mode: 'onBlur',
     reValidateMode: 'onBlur',
-    defaultValues: {},
+    defaultValues: {
+      firstName,
+      lastName,
+      permanentAddress,
+      postalCode,
+      presentAddress,
+      city,
+      country,
+      dateOfBirth: dateOfBirth ? new Date(dateOfBirth) : undefined,
+      avatar,
+    },
   });
 
   const {
@@ -51,8 +85,41 @@ export const EditProfileForm = () => {
     control,
   } = form;
 
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log(data);
+  const [isPending, setIsPending] = useState(false);
+  const [avatarFile, setAvatarFile] = useState<File | null>(null);
+
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    setIsPending(true);
+    const { avatar, dateOfBirth } = data;
+    let uploadedAvatarUrl = avatar;
+
+    if (avatarFile) {
+      const { image, error } = await uploadImageToImgbb(avatarFile);
+      if (image) {
+        uploadedAvatarUrl = image;
+      } else {
+        toast.error('Failed to upload avatar', { description: error || '' });
+        setIsPending(false);
+        return;
+      }
+    }
+
+    const payload = {
+      ...data,
+      avatar: uploadedAvatarUrl,
+      dateOfBirth: dateOfBirth?.toString() || '',
+    } as UserPayload;
+
+    const { error } = await updateUser(token, id, payload);
+
+    if (error) {
+      toast.error('Edit user failed', { description: error });
+      setIsPending(false);
+      return;
+    }
+
+    setIsPending(false);
+    toast.success('Edit user success');
   };
 
   const handleInputChange = (
@@ -77,13 +144,11 @@ export const EditProfileForm = () => {
             <FormField
               control={control}
               name="avatar"
-              render={({ field: { value, onChange, ...rest } }) => (
+              render={({ field: { value } }) => (
                 <AvatarUpload
-                  {...rest}
                   src={value || ''}
-                  onChange={(...args) => {
-                    onChange(...args);
-                    return true; // or return undefined if that's more appropriate
+                  onChange={(file) => {
+                    setAvatarFile(file); // Store file to upload later
                   }}
                 />
               )}
@@ -109,22 +174,8 @@ export const EditProfileForm = () => {
                   />
                 )}
               />
-              <FormField
-                control={control}
-                name="email"
-                render={({
-                  field: { onChange, value, ...rest },
-                  fieldState: { error },
-                }) => (
-                  <Input
-                    {...rest}
-                    label="Email"
-                    errorMessage={error?.message}
-                    defaultValue={value}
-                    onChange={handleInputChange('email', onChange)}
-                  />
-                )}
-              />
+
+              <Input label="Email" defaultValue={email} disabled={!!email} />
 
               <FormField
                 control={control}
@@ -197,23 +248,14 @@ export const EditProfileForm = () => {
                   />
                 )}
               />
-              <FormField
-                control={control}
-                name="password"
-                render={({
-                  field: { onChange, value, ...rest },
-                  fieldState: { error },
-                }) => (
-                  <Input
-                    {...rest}
-                    label="Password"
-                    placeholder="Password"
-                    errorMessage={error?.message}
-                    defaultValue={value}
-                    onChange={handleInputChange('password', onChange)}
-                  />
-                )}
+
+              <Input
+                label="Password"
+                placeholder="Password"
+                defaultValue="********"
+                disabled={!!email}
               />
+
               <FormField
                 control={control}
                 name="presentAddress"
@@ -267,7 +309,12 @@ export const EditProfileForm = () => {
               />
 
               <div className="flex justify-end mt-3">
-                <Button type="submit" className="w-[190px] h-[50px]">
+                <Button
+                  type="submit"
+                  className="w-[190px] h-[50px]"
+                  isLoading={isPending}
+                  disabled={isPending}
+                >
                   Save
                 </Button>
               </div>

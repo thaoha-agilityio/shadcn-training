@@ -125,7 +125,12 @@ export const LoginForm = () => {
             )}
           />
 
-          <Button type="submit" className="w-full" isLoading={isPending}>
+          <Button
+            type="submit"
+            className="w-full"
+            isLoading={isPending}
+            disabled={isPending}
+          >
             Login
           </Button>
         </form>

@@ -9,7 +9,7 @@ import { Input, Avatar, Button } from '@/components/ui';
 interface AvatarUploadProps {
   src: string;
   srcUpload?: string;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => boolean | undefined;
+  onChange?: (file: File) => void;
 }
 
 export const AvatarUpload = ({
@@ -21,15 +21,12 @@ export const AvatarUpload = ({
   const [previewUrl, setPreviewUrl] = useState<string>(src || srcUpload);
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (onChange) {
-      const isValid = onChange(e);
-      if (!isValid) return;
-    }
-
     const file = e.target.files?.[0];
     if (!file) return;
 
     const url = URL.createObjectURL(file);
+
+    onChange?.(file);
     setPreviewUrl(url);
   };
 

@@ -30,7 +30,7 @@ class APIClient {
   ): Promise<SuccessResponse<T> | FailedResponse> => {
     const { method = 'GET', body, headers, baseUrl, ...rest } = init || {};
 
-    const hasBody = method === 'POST' || method === 'PUT';
+    const hasBody = method === 'POST' || method === 'PATCH' || method === 'PUT';
 
     const customHeader = {
       ...headers,
@@ -83,6 +83,10 @@ class APIClient {
 
   async put<T>(url: string, init?: Omit<RequestOption, 'method'>) {
     return this.apiRequest<T>(url, { ...init, method: 'PUT' });
+  }
+
+  async patch<T>(url: string, init?: Omit<RequestOption, 'method'>) {
+    return this.apiRequest<T>(url, { ...init, method: 'PATCH' });
   }
 
   async delete(url: string, init?: Omit<RequestOption, 'method'>) {
