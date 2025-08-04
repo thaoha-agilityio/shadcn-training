@@ -47,7 +47,7 @@ export const AvatarUpload = ({
           type="button"
           onClick={triggerUpload}
         >
-          <EditIcon />
+          <EditIcon className="text-card" />
         </Button>
       </div>
 

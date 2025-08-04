@@ -137,7 +137,7 @@ export const EditProfileForm = ({ user, token = '' }: EditProfileFormProps) => {
     <div>
       <Form {...form}>
         <form
-          className="flex flex-col md:flex-row items-center md:items-start gap-[55px]"
+          className="flex flex-col md:flex-row items-center md:items-start gap-9 mt-5"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div>

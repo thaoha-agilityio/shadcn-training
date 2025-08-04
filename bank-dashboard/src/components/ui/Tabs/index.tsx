@@ -81,18 +81,20 @@ export const Tabs = ({
       className={cn('w-full', className)}
       {...props}
     >
-      <TabsList className={extraStyle}>
-        {tabs.map(({ value, label, onClick }) => (
-          <TabsTrigger
-            key={value}
-            value={value}
-            onClick={onClick}
-            className="pb-2"
-          >
-            {label}
-          </TabsTrigger>
-        ))}
-      </TabsList>
+      <div className="w-full border-b border-border">
+        <TabsList className={extraStyle}>
+          {tabs.map(({ value, label, onClick }) => (
+            <TabsTrigger
+              key={value}
+              value={value}
+              onClick={onClick}
+              className="pb-2"
+            >
+              {label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+      </div>
 
       {tabs.map(({ value, content }) => (
         <TabsContent key={value} value={value} className="mt-2">

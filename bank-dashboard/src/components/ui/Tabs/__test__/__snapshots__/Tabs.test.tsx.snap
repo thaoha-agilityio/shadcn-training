@@ -12,6 +12,89 @@ exports[`Tabs Component renders all page numbers correctly without ellipsis 1`] 
         dir="ltr"
       >
         <div
+          class="w-full border-b border-border"
+        >
+          <div
+            aria-orientation="horizontal"
+            class="text-muted-foreground inline-flex h-9 w-fit items-center justify-center rounded-lg p-[3px]"
+            data-orientation="horizontal"
+            data-slot="tabs-list"
+            role="tablist"
+            style="outline: none;"
+            tabindex="0"
+          >
+            <button
+              aria-controls="radix-«r0»-content-profile"
+              aria-selected="true"
+              class="relative data-[state=active]:text-primary inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 px-2 py-1 text-xs font-medium text-helper whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-1 data-[state=active]:after:bg-primary data-[state=active]:after:rounded-t-[4px] pb-2"
+              data-orientation="horizontal"
+              data-radix-collection-item=""
+              data-slot="tabs-trigger"
+              data-state="active"
+              id="radix-«r0»-trigger-profile"
+              role="tab"
+              tabindex="-1"
+              type="button"
+            >
+              Profile
+            </button>
+            <button
+              aria-controls="radix-«r0»-content-security"
+              aria-selected="false"
+              class="relative data-[state=active]:text-primary inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 px-2 py-1 text-xs font-medium text-helper whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-1 data-[state=active]:after:bg-primary data-[state=active]:after:rounded-t-[4px] pb-2"
+              data-orientation="horizontal"
+              data-radix-collection-item=""
+              data-slot="tabs-trigger"
+              data-state="inactive"
+              id="radix-«r0»-trigger-security"
+              role="tab"
+              tabindex="-1"
+              type="button"
+            >
+              Security
+            </button>
+          </div>
+        </div>
+        <div
+          aria-labelledby="radix-«r0»-trigger-profile"
+          class="flex-1 outline-none mt-2"
+          data-orientation="horizontal"
+          data-slot="tabs-content"
+          data-state="active"
+          id="radix-«r0»-content-profile"
+          role="tabpanel"
+          style="animation-duration: 0s;"
+          tabindex="0"
+        >
+          <div>
+            Your profile content
+          </div>
+        </div>
+        <div
+          aria-labelledby="radix-«r0»-trigger-security"
+          class="flex-1 outline-none mt-2"
+          data-orientation="horizontal"
+          data-slot="tabs-content"
+          data-state="inactive"
+          hidden=""
+          id="radix-«r0»-content-security"
+          role="tabpanel"
+          tabindex="0"
+        />
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="flex flex-col gap-2 w-full"
+      data-orientation="horizontal"
+      data-slot="tabs"
+      dir="ltr"
+    >
+      <div
+        class="w-full border-b border-border"
+      >
+        <div
           aria-orientation="horizontal"
           class="text-muted-foreground inline-flex h-9 w-fit items-center justify-center rounded-lg p-[3px]"
           data-orientation="horizontal"
@@ -51,81 +134,6 @@ exports[`Tabs Component renders all page numbers correctly without ellipsis 1`] 
             Security
           </button>
         </div>
-        <div
-          aria-labelledby="radix-«r0»-trigger-profile"
-          class="flex-1 outline-none mt-2"
-          data-orientation="horizontal"
-          data-slot="tabs-content"
-          data-state="active"
-          id="radix-«r0»-content-profile"
-          role="tabpanel"
-          style="animation-duration: 0s;"
-          tabindex="0"
-        >
-          <div>
-            Your profile content
-          </div>
-        </div>
-        <div
-          aria-labelledby="radix-«r0»-trigger-security"
-          class="flex-1 outline-none mt-2"
-          data-orientation="horizontal"
-          data-slot="tabs-content"
-          data-state="inactive"
-          hidden=""
-          id="radix-«r0»-content-security"
-          role="tabpanel"
-          tabindex="0"
-        />
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="flex flex-col gap-2 w-full"
-      data-orientation="horizontal"
-      data-slot="tabs"
-      dir="ltr"
-    >
-      <div
-        aria-orientation="horizontal"
-        class="text-muted-foreground inline-flex h-9 w-fit items-center justify-center rounded-lg p-[3px]"
-        data-orientation="horizontal"
-        data-slot="tabs-list"
-        role="tablist"
-        style="outline: none;"
-        tabindex="0"
-      >
-        <button
-          aria-controls="radix-«r0»-content-profile"
-          aria-selected="true"
-          class="relative data-[state=active]:text-primary inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 px-2 py-1 text-xs font-medium text-helper whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-1 data-[state=active]:after:bg-primary data-[state=active]:after:rounded-t-[4px] pb-2"
-          data-orientation="horizontal"
-          data-radix-collection-item=""
-          data-slot="tabs-trigger"
-          data-state="active"
-          id="radix-«r0»-trigger-profile"
-          role="tab"
-          tabindex="-1"
-          type="button"
-        >
-          Profile
-        </button>
-        <button
-          aria-controls="radix-«r0»-content-security"
-          aria-selected="false"
-          class="relative data-[state=active]:text-primary inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 px-2 py-1 text-xs font-medium text-helper whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-1 data-[state=active]:after:bg-primary data-[state=active]:after:rounded-t-[4px] pb-2"
-          data-orientation="horizontal"
-          data-radix-collection-item=""
-          data-slot="tabs-trigger"
-          data-state="inactive"
-          id="radix-«r0»-trigger-security"
-          role="tab"
-          tabindex="-1"
-          type="button"
-        >
-          Security
-        </button>
       </div>
       <div
         aria-labelledby="radix-«r0»-trigger-profile"
