@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 // Components
 import { AppSidebar, HeaderHome } from '@/components/layouts';
 
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/Sidebar';
+import { SidebarProvider } from '@/components/ui/Sidebar';
 
 // Services
 import { getUserLoggedIn } from '@/services';
@@ -25,7 +25,6 @@ export default async function HomeLayout({
   return (
     <SidebarProvider>
       <AppSidebar />
-      <SidebarTrigger />
       <div className="flex flex-col w-full h-screen">
         <HeaderHome avatar={avatar} fullName={fullName} />
         <div className="bg-secondary min-h-calc(100vh - 70px) md:h-screen ">
