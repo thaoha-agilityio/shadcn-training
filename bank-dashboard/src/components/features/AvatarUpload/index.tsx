@@ -4,17 +4,28 @@ import { ChangeEvent, useRef, useState } from 'react';
 
 // Components
 import { EditIcon } from '@/components/icons';
-import { Input } from '@/components/ui';
-import { Avatar } from '@/components/ui/Avatar';
-import { Button } from '@/components/ui/Button';
+import { Input, Avatar, Button } from '@/components/ui';
 
-export const AvatarUpload = () => {
+interface AvatarUploadProps {
+  src: string;
+  srcUpload?: string;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => boolean | undefined;
+}
+
+export const AvatarUpload = ({
+  onChange,
+  src,
+  srcUpload = '',
+}: AvatarUploadProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [previewUrl, setPreviewUrl] = useState<string>(
-    'https://tse3.mm.bing.net/th/id/OIP.WdWvcVdr6qONXPNvzDfLnwHaHa?pid=Api&P=0&h=220',
-  );
+  const [previewUrl, setPreviewUrl] = useState<string>(src || srcUpload);
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      const isValid = onChange(e);
+      if (!isValid) return;
+    }
+
     const file = e.target.files?.[0];
     if (!file) return;
 

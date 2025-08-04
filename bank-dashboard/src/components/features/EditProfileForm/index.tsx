@@ -3,6 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
+import { ChangeEvent } from 'react';
 
 // Components
 import { Input } from '@/components/ui';
@@ -13,6 +14,9 @@ import { AvatarUpload } from '../AvatarUpload';
 
 // Constants
 import { FORM_VALIDATION_MESSAGE } from '@/constants';
+
+// Types
+import { clearErrorOnChange } from '@/utils';
 
 const formSchema = z.object({
   email: z.string().nonempty(FORM_VALIDATION_MESSAGE.REQUIRED('Email')),
@@ -26,6 +30,10 @@ const formSchema = z.object({
   city: z.string(),
   country: z.string(),
   password: z.string(),
+  dateOfBirth: z
+    .date()
+    .refine((date) => date <= new Date() && date >= new Date('1900-01-01')),
+  avatar: z.string().optional(),
 });
 
 export const EditProfileForm = () => {
@@ -33,9 +41,7 @@ export const EditProfileForm = () => {
     resolver: zodResolver(formSchema),
     mode: 'onBlur',
     reValidateMode: 'onBlur',
-    defaultValues: {
-      email: '',
-    },
+    defaultValues: {},
   });
 
   const {
@@ -48,21 +54,49 @@ export const EditProfileForm = () => {
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     console.log(data);
   };
+
+  const handleInputChange = (
+    name: keyof z.infer<typeof formSchema>,
+    onChange: (value: string) => void,
+  ) => {
+    return (e: ChangeEvent<HTMLInputElement>) => {
+      onChange(e.target.value);
+
+      clearErrorOnChange(name, errors, clearErrors);
+    };
+  };
+
   return (
     <div>
       <Form {...form}>
-        <form className="flex gap-[55px]" onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className="flex flex-col md:flex-row items-center md:items-start gap-[55px]"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <div>
-            <AvatarUpload />
+            <FormField
+              control={control}
+              name="avatar"
+              render={({ field: { value, onChange, ...rest } }) => (
+                <AvatarUpload
+                  {...rest}
+                  src={value || ''}
+                  onChange={(...args) => {
+                    onChange(...args);
+                    return true; // or return undefined if that's more appropriate
+                  }}
+                />
+              )}
+            />
           </div>
 
-          <div className="flex gap-7 flex-1">
+          <div className="flex gap-7 flex-col md:flex-row w-full flex-1">
             <div className="flex flex-col gap-5 w-full">
               <FormField
                 control={control}
                 name="firstName"
                 render={({
-                  field: { onChange, ...rest },
+                  field: { onChange, value, ...rest },
                   fieldState: { error },
                 }) => (
                   <Input
@@ -70,7 +104,8 @@ export const EditProfileForm = () => {
                     placeholder="First Name"
                     label="First Name"
                     errorMessage={error?.message}
-                    onChange={onChange}
+                    onChange={handleInputChange('firstName', onChange)}
+                    defaultValue={value}
                   />
                 )}
               />
@@ -78,36 +113,50 @@ export const EditProfileForm = () => {
                 control={control}
                 name="email"
                 render={({
-                  field: { onChange, ...rest },
+                  field: { onChange, value, ...rest },
                   fieldState: { error },
                 }) => (
                   <Input
                     {...rest}
                     label="Email"
                     errorMessage={error?.message}
-                    onChange={onChange}
+                    defaultValue={value}
+                    onChange={handleInputChange('email', onChange)}
                   />
                 )}
               />
 
-              <DatePicker
-                value={undefined}
-                onSelect={(value) => console.log(value)}
+              <FormField
+                control={control}
+                name="dateOfBirth"
+                render={({
+                  field: { onChange, value, ...rest },
+                  fieldState: { error },
+                }) => (
+                  <DatePicker
+                    label="Date of birth"
+                    value={value}
+                    onSelect={onChange}
+                    errorMessage={error?.message}
+                    {...rest}
+                  />
+                )}
               />
 
               <FormField
                 control={control}
                 name="permanentAddress"
                 render={({
-                  field: { onChange, ...rest },
+                  field: { onChange, value, ...rest },
                   fieldState: { error },
                 }) => (
                   <Input
                     {...rest}
                     label="Permanent Address"
                     placeholder="Address"
+                    defaultValue={value}
                     errorMessage={error?.message}
-                    onChange={onChange}
+                    onChange={handleInputChange('permanentAddress', onChange)}
                   />
                 )}
               />
@@ -116,7 +165,7 @@ export const EditProfileForm = () => {
                 control={control}
                 name="postalCode"
                 render={({
-                  field: { onChange, ...rest },
+                  field: { onChange, value, ...rest },
                   fieldState: { error },
                 }) => (
                   <Input
@@ -124,7 +173,8 @@ export const EditProfileForm = () => {
                     label="Postal Code"
                     placeholder="Postal Code"
                     errorMessage={error?.message}
-                    onChange={onChange}
+                    defaultValue={value}
+                    onChange={handleInputChange('postalCode', onChange)}
                   />
                 )}
               />
@@ -134,7 +184,7 @@ export const EditProfileForm = () => {
                 control={control}
                 name="lastName"
                 render={({
-                  field: { onChange, ...rest },
+                  field: { onChange, value, ...rest },
                   fieldState: { error },
                 }) => (
                   <Input
@@ -142,7 +192,8 @@ export const EditProfileForm = () => {
                     label="Last Name"
                     placeholder="Last Name"
                     errorMessage={error?.message}
-                    onChange={onChange}
+                    defaultValue={value}
+                    onChange={handleInputChange('lastName', onChange)}
                   />
                 )}
               />
@@ -150,7 +201,7 @@ export const EditProfileForm = () => {
                 control={control}
                 name="password"
                 render={({
-                  field: { onChange, ...rest },
+                  field: { onChange, value, ...rest },
                   fieldState: { error },
                 }) => (
                   <Input
@@ -158,7 +209,8 @@ export const EditProfileForm = () => {
                     label="Password"
                     placeholder="Password"
                     errorMessage={error?.message}
-                    onChange={onChange}
+                    defaultValue={value}
+                    onChange={handleInputChange('password', onChange)}
                   />
                 )}
               />
@@ -166,7 +218,7 @@ export const EditProfileForm = () => {
                 control={control}
                 name="presentAddress"
                 render={({
-                  field: { onChange, ...rest },
+                  field: { onChange, value, ...rest },
                   fieldState: { error },
                 }) => (
                   <Input
@@ -174,7 +226,8 @@ export const EditProfileForm = () => {
                     label="Present Address"
                     placeholder="Present Address"
                     errorMessage={error?.message}
-                    onChange={onChange}
+                    defaultValue={value}
+                    onChange={handleInputChange('presentAddress', onChange)}
                   />
                 )}
               />
@@ -182,7 +235,7 @@ export const EditProfileForm = () => {
                 control={control}
                 name="city"
                 render={({
-                  field: { onChange, ...rest },
+                  field: { onChange, value, ...rest },
                   fieldState: { error },
                 }) => (
                   <Input
@@ -190,7 +243,8 @@ export const EditProfileForm = () => {
                     label="City"
                     placeholder="City"
                     errorMessage={error?.message}
-                    onChange={onChange}
+                    defaultValue={value}
+                    onChange={handleInputChange('city', onChange)}
                   />
                 )}
               />
@@ -198,7 +252,7 @@ export const EditProfileForm = () => {
                 control={control}
                 name="country"
                 render={({
-                  field: { onChange, ...rest },
+                  field: { onChange, value, ...rest },
                   fieldState: { error },
                 }) => (
                   <Input
@@ -206,7 +260,8 @@ export const EditProfileForm = () => {
                     label="Country"
                     placeholder="Country"
                     errorMessage={error?.message}
-                    onChange={onChange}
+                    defaultValue={value}
+                    onChange={handleInputChange('country', onChange)}
                   />
                 )}
               />

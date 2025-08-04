@@ -24,3 +24,7 @@ export interface LoginResponse {
 }
 
 export type UserPayload = Omit<UserInfo, 'password' | 'email ' | 'id'>;
+
+export interface UserUpdatePayload {
+  user: Omit<UserInfo, 'password' | 'email' | 'id'>;
+}
