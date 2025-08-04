@@ -1,4 +1,5 @@
 import { ComponentProps } from 'react';
+import Link from 'next/link';
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -17,7 +18,7 @@ const PaginationWrapper = ({ className, ...props }: ComponentProps<'nav'>) => (
     role="navigation"
     aria-label="pagination"
     data-slot="pagination"
-    className={cn('mx-auto flex w-full justify-center', className)}
+    className={cn('flex w-full justify-end', className)}
     {...props}
   />
 );
@@ -36,33 +37,41 @@ const PaginationItem = ({ ...props }: ComponentProps<'li'>) => (
 
 type PaginationLinkProps = {
   isActive?: boolean;
-} & Pick<ComponentProps<typeof Button>, 'size'> &
-  ComponentProps<'a'>;
+  children?: React.ReactNode;
+} & Pick<ComponentProps<typeof Link>, 'href'> & // ✅ Use Link props
+  Pick<ComponentProps<'a'>, 'className'> & // Optional for styling
+  Pick<ComponentProps<typeof Button>, 'size'>;
 
 const PaginationLink = ({
-  className,
   isActive,
-  size = 'icon',
+  size = 'default',
+  className,
+  href,
+  children,
   ...props
-}: PaginationLinkProps) => (
-  <a
-    aria-current={isActive ? 'page' : undefined}
-    data-slot="pagination-link"
-    data-active={isActive}
-    className={cn(
-      'text-primary',
-      buttonVariants({
-        variant: isActive ? 'default' : 'ghost',
-        size,
-        className: isActive ? 'size-10' : 'hover:text-primary/70',
-      }),
-
-      className,
-    )}
-    {...props}
-  />
-);
-
+}: PaginationLinkProps) => {
+  return (
+    <Link
+      href={href}
+      scroll={false} // ✅ Prevent scroll jump
+      aria-current={isActive ? 'page' : undefined}
+      data-slot="pagination-link"
+      data-active={isActive}
+      className={cn(
+        'text-primary',
+        buttonVariants({
+          variant: isActive ? 'default' : 'ghost',
+          size,
+          className: isActive ? 'size-10' : 'hover:text-primary/70',
+        }),
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </Link>
+  );
+};
 interface PaginationArrowProps extends ComponentProps<typeof PaginationLink> {
   isDisabled?: boolean;
   isPrevious?: boolean;
@@ -76,10 +85,9 @@ const PaginationArrow = ({
 }: PaginationArrowProps) => (
   <PaginationLink
     aria-label="Go to next page"
-    size="default"
     className={cn(
       'gap-1 px-2.5 sm:pr-2.5',
-      isDisabled && 'pointer-events-none',
+      isDisabled && 'pointer-events-none text-primary/50',
       className,
     )}
     {...props}
@@ -105,41 +113,64 @@ const PaginationEllipsis = ({
   </span>
 );
 
+export {
+  PaginationWrapper,
+  PaginationContent,
+  PaginationItem,
+  PaginationArrow,
+  PaginationEllipsis,
+  PaginationLink,
+};
+
 interface PaginationProps {
   totalPages: number;
   currentPage: number;
-  onChangePage?: (page: number) => void;
+  createPageURL: (page: number | string) => string;
 }
 
-export const Pagination = ({ totalPages, currentPage }: PaginationProps) => {
+export const Pagination = ({
+  totalPages,
+  currentPage,
+  createPageURL,
+}: PaginationProps) => {
   const allPages = generatePagination(currentPage, totalPages);
 
   return (
-    <PaginationWrapper>
+    <PaginationWrapper className="mt-7">
       <PaginationContent>
         <PaginationItem>
-          <PaginationArrow isPrevious href="#" isDisabled />
+          <PaginationArrow
+            isPrevious
+            href={createPageURL(currentPage - 1)}
+            isDisabled={currentPage === 1}
+          />
         </PaginationItem>
 
         {allPages.map((page, index) => {
           const isEllipsis = page === '...';
 
           return (
-            <>
+            <div key={`${page}-${index}`}>
               <PaginationItem key={`${page}-${index}`}>
                 {isEllipsis ? (
                   <PaginationEllipsis />
                 ) : (
-                  <PaginationLink href="#" isActive={currentPage === page}>
+                  <PaginationLink
+                    href={createPageURL(page)}
+                    isActive={currentPage === page}
+                  >
                     {page}
                   </PaginationLink>
                 )}
               </PaginationItem>
-            </>
+            </div>
           );
         })}
         <PaginationItem>
-          <PaginationArrow href="#" />
+          <PaginationArrow
+            href={createPageURL(currentPage + 1)}
+            isDisabled={currentPage === totalPages}
+          />
         </PaginationItem>
       </PaginationContent>
     </PaginationWrapper>

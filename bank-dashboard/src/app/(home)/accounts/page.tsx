@@ -12,8 +12,16 @@ import { PRICE_TYPE } from '@/constants';
 // Services
 import { getCardDetails, getTransactionList } from '@/services';
 
-const Accounts = async () => {
+const Accounts = async ({
+  searchParams,
+}: {
+  searchParams?: {
+    page?: number;
+  };
+}) => {
   const titleStyle = 'text-title text-lg font-semibold';
+
+  // Fetch transactions and card details
   const { data: transactions } = await getTransactionList(1, 3);
   const cookieStore = await cookies();
   const userId = cookieStore.get('userId')?.value || '';
@@ -28,11 +36,17 @@ const Accounts = async () => {
     income = 0,
   } = cardDetails || {};
 
+  // Get current page from search params
+  const params = await searchParams;
+  const currentPage = params?.page || 1;
+
   const TABS_DATA = [
     {
       value: 'all_transactions',
       label: 'All Transactions',
-      content: <TransactionList cardNumber={cardNumber} />,
+      content: (
+        <TransactionList cardNumber={cardNumber} currentPage={currentPage} />
+      ),
     },
     {
       value: 'income',
@@ -45,6 +59,7 @@ const Accounts = async () => {
       content: <div>Your profile content</div>,
     },
   ];
+
   return (
     <div className="py-7 px-6">
       <div className="flex justify-between flex-wrap gap-2 md:gap-6">

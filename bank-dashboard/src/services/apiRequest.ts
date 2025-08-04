@@ -5,8 +5,12 @@ type RequestOption = Omit<RequestInit, 'body'> & {
   body?: object;
   baseUrl?: string; // 👈 New optional base URL
 };
-export type SuccessResponse<T> = { data: T; error: null | string };
-export type FailedResponse = { data: null; error: string };
+export type SuccessResponse<T> = {
+  data: T;
+  error: null | string;
+  headers?: Headers;
+};
+export type FailedResponse = { data: null; error: string; headers?: null };
 
 class APIClient {
   private static _apiClient: APIClient;
@@ -53,6 +57,7 @@ class APIClient {
       return {
         data: (await res.json()) as T,
         error: null,
+        headers: res.headers,
       };
     } catch (error) {
       if (error instanceof Error) {
