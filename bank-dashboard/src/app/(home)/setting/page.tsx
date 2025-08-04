@@ -14,7 +14,7 @@ const SettingPage = async () => {
 
   return (
     <div className="py-5 px-6">
-      <EditProfileForm user={user ?? undefined} token={token} />
+      <EditProfileForm user={user} token={token} />
     </div>
   );
 };

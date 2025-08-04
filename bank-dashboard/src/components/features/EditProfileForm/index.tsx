@@ -42,7 +42,7 @@ const formSchema = z.object({
 });
 
 interface EditProfileFormProps {
-  user?: UserInfo;
+  user?: UserInfo | null;
   token?: string;
 }
 
