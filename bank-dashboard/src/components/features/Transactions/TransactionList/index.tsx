@@ -1,4 +1,5 @@
 // Components
+import { PAGINATION_LIMIT } from '@/constants';
 import { Transactions } from './Transactions';
 
 // Services
@@ -15,7 +16,7 @@ export async function TransactionList({
 }: TransactionListProps) {
   const { data: transactions, totalCount = 0 } = await getTransactionList(
     currentPage,
-    5,
+    PAGINATION_LIMIT,
   );
 
   const transactionsWithCardNumber = (transactions || []).map((tx) => ({

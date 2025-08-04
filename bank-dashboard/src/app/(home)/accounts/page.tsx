@@ -20,6 +20,8 @@ const Accounts = async ({
   };
 }) => {
   const titleStyle = 'text-title text-lg font-semibold';
+
+  // Fetch transactions and card details
   const { data: transactions } = await getTransactionList(1, 3);
   const cookieStore = await cookies();
   const userId = cookieStore.get('userId')?.value || '';
@@ -34,7 +36,9 @@ const Accounts = async ({
     income = 0,
   } = cardDetails || {};
 
-  const currentPage = searchParams?.page || 1;
+  // Get current page from search params
+  const params = await searchParams;
+  const currentPage = params?.page || 1;
 
   const TABS_DATA = [
     {
