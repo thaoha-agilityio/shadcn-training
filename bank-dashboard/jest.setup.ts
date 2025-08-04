@@ -16,3 +16,7 @@ jest.mock('next/navigation', () => ({
 jest.mock('next-themes', () => ({
   useTheme: jest.fn(),
 }));
+
+jest.mock('next/cache', () => ({
+  revalidateTag: jest.fn(),
+}));

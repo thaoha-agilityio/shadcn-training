@@ -1,5 +1,7 @@
 'use server';
 
+import { revalidateTag } from 'next/cache';
+
 // Constants
 import { API_ENDPOINT, ERROR_MESSAGES } from '@/constants';
 
@@ -8,7 +10,6 @@ import { apiClient, FailedResponse, SuccessResponse } from './apiRequest';
 
 // Types
 import { UserInfo, UserPayload } from '@/types';
-import { revalidateTag } from 'next/cache';
 
 export const getUserLoggedIn = async (
   token: string,
