@@ -1,3 +1,5 @@
+import { cookies } from 'next/headers';
+
 import {
   BalanceHistoryChart,
   ExpensePieChart,
@@ -8,9 +10,7 @@ import {
 } from '@/components/features';
 
 // Services
-import { getCardDetails } from '@/services';
-import { getTransactionList } from '@/services/transaction';
-import { cookies } from 'next/headers';
+import { getCardDetails, getTransactionList } from '@/services';
 
 export default async function Home() {
   const cookieStore = await cookies();
