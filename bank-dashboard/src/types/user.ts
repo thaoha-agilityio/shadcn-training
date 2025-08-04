@@ -4,27 +4,23 @@ export interface UserInfo {
   id: string;
   firstName: string;
   lastName: string;
-  name: string;
   email: string;
   password?: string;
   avatar?: string;
   card: CardInfo;
   permanentAddress?: string;
   presentAddress?: string;
-  postalCode?: number;
+  postalCode?: string;
   country?: string;
   city?: string;
+  dateOfBirth?: string;
 }
 
 export type LoginPayload = Pick<UserInfo, 'email' | 'password'>;
 
 export interface LoginResponse {
-  accessToken: string;
   user: Omit<UserInfo, 'password'>;
+  accessToken: string;
 }
 
-export type UserPayload = Omit<UserInfo, 'password' | 'email ' | 'id'>;
-
-export interface UserUpdatePayload {
-  user: Omit<UserInfo, 'password' | 'email' | 'id'>;
-}
+export type UserPayload = Omit<UserInfo, 'password' | 'email ' | 'id' | 'card'>;
