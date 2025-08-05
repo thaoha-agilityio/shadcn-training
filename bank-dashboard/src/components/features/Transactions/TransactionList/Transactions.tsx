@@ -4,8 +4,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 
 // Components
 import { columns } from './columns';
-import { DataTable } from '@/components/common/DataTable';
-import { Pagination } from '@/components/ui/Pagination';
+import { DataTable, Pagination } from '@/components/common';
 
 // Constants
 import { PAGINATION_LIMIT, SEARCH_PARAMS } from '@/constants';

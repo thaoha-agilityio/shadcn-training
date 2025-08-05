@@ -7,10 +7,10 @@ import { ChangeEvent, useState } from 'react';
 import { toast } from 'sonner';
 
 // Components
-import { Input } from '@/components/ui';
+import { Input, DatePicker } from '@/components/common';
 import { Button } from '@/components/ui/Button';
 import { FormField, Form } from '@/components/ui/form';
-import { DatePicker } from '@/components/common/DatePicker';
+
 import { AvatarUpload } from '../AvatarUpload';
 
 // Constants

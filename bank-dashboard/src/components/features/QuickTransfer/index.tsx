@@ -1,6 +1,6 @@
 // Components
 import { SendIcon } from '@/components/icons';
-import { Input } from '@/components/ui';
+import { Input } from '@/components/common';
 import { Avatar } from '@/components/ui/Avatar';
 import { Button } from '@/components/ui/Button';
 

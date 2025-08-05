@@ -9,9 +9,9 @@ import { z } from 'zod';
 import { toast } from 'sonner';
 
 // Components
-import { Input } from '@/components/ui';
+import { Input } from '@/components/common';
 import { Form, FormField } from '@/components/ui/form';
-import { PasswordInput } from '@/components/ui/PasswordInput';
+import { PasswordInput } from '@/components/common';
 
 // Constants
 import { AUTH_ROUTES, FORM_VALIDATION_MESSAGE } from '@/constants';

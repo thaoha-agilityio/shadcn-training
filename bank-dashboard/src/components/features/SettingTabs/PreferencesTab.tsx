@@ -1,4 +1,5 @@
-import { Button, Input, Switch } from '@/components/ui';
+import { Button, Switch } from '@/components/ui';
+import { Input } from '@/components/common';
 
 export const PreferencesTab = () => (
   <form className="max-w-full space-y-6">
