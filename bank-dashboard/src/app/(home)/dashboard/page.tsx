@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { cookies } from 'next/headers';
 
 import {
@@ -12,7 +13,16 @@ import {
 // Services
 import { getCardDetails, getTransactionList } from '@/services';
 
-export default async function Home() {
+export const metadata: Metadata = {
+  title: 'Dashboard',
+  description: 'Dashboard page for Bank Dashboard',
+  openGraph: {
+    title: 'Dashboard',
+    description: 'Dashboard page for Bank Dashboard',
+  },
+};
+
+export default async function DashboardPage() {
   const cookieStore = await cookies();
   const userId = cookieStore.get('userId')?.value || '';
 

@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { cookies } from 'next/headers';
 
 // Components
@@ -10,6 +11,15 @@ import { Tabs } from '@/components/ui/Tabs';
 
 // Services
 import { getUserLoggedIn } from '@/services';
+
+export const metadata: Metadata = {
+  title: 'Setting',
+  description: 'Setting page for Bank Dashboard',
+  openGraph: {
+    title: 'Setting',
+    description: 'Setting page for Bank Dashboard',
+  },
+};
 
 const SettingPage = async () => {
   const cookieStore = await cookies();

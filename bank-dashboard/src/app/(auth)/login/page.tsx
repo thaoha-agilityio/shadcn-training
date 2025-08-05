@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     description: 'Login page for Bank Dashboard',
   },
 };
+
 const LoginPage = () => (
   <div className="mx-auto px-8 flex-col h-[calc(100vh-36px)] flex justify-center items-center">
     <LoginForm />
