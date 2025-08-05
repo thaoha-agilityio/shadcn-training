@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { cookies } from 'next/headers';
 
 // Components
@@ -11,6 +12,15 @@ import { PRICE_TYPE } from '@/constants';
 
 // Services
 import { getCardDetails, getTransactionList } from '@/services';
+
+export const metadata: Metadata = {
+  title: 'Account',
+  description: 'Account page for Bank Dashboard',
+  openGraph: {
+    title: 'Account',
+    description: 'Account page for Bank Dashboard',
+  },
+};
 
 const Accounts = async ({
   searchParams,
