@@ -88,7 +88,7 @@ export const Tabs = ({
               key={value}
               value={value}
               onClick={onClick}
-              className="pb-2"
+              className="pb-2 cursor-pointer"
             >
               {label}
             </TabsTrigger>

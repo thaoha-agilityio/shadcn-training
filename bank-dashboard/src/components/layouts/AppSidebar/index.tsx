@@ -41,7 +41,9 @@ export const AppSidebar = () => {
                     <SidebarMenuButton
                       asChild
                       isActive={isActive}
-                      className={disable ? 'cursor-not-allowed' : ''}
+                      className={
+                        disable ? 'pointer-events-none cursor-not-allowed' : ''
+                      }
                     >
                       <Link
                         href={href}
