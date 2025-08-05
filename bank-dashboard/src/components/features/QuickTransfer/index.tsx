@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/Button';
 import { QUICK_TRANSFER_DATA } from '@/constants';
 
 export const QuickTransfer = () => (
-  <div className="py-8 px-6 bg-card rounded-2xl mt-4">
+  <div className="py-8 px-6 bg-card rounded-2xl mt-4 h-[300px]">
     <div className="flex gap-10">
       {QUICK_TRANSFER_DATA.map(({ id, name, role, img }) => (
         <div key={id} className="flex flex-col items-center">
@@ -25,7 +25,7 @@ export const QuickTransfer = () => (
         defaultValue={525.5}
         endContent={
           <Button className="h-[50px] rounded-4xl w-[100px]">
-            Send <SendIcon />
+            Send <SendIcon className="text-card" />
           </Button>
         }
       />

@@ -1,7 +1,10 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
+// Components
 import {
   Sidebar,
   SidebarContent,
@@ -12,12 +15,10 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/Sidebar';
-import { cn } from '@/lib/utils';
 import { LogoIcon } from '@/components/icons';
 
 // Constants
 import { LINKS } from '@/constants';
-import { usePathname } from 'next/navigation';
 
 export const AppSidebar = () => {
   const path = usePathname();
@@ -40,7 +41,7 @@ export const AppSidebar = () => {
                     <SidebarMenuButton
                       asChild
                       isActive={isActive}
-                      className={disable ? 'pointer-events-none' : ''}
+                      className={disable ? 'cursor-not-allowed' : ''}
                     >
                       <Link
                         href={href}

@@ -25,11 +25,9 @@ export default async function HomeLayout({
   return (
     <SidebarProvider>
       <AppSidebar />
-      <div className="flex flex-col w-full h-screen">
+      <div className="flex flex-col w-full min-h-screen">
         <HeaderHome avatar={avatar} fullName={fullName} />
-        <div className="bg-secondary min-h-calc(100vh - 70px) md:h-screen ">
-          {children}
-        </div>
+        <div className="bg-secondary h-full">{children}</div>
       </div>
     </SidebarProvider>
   );

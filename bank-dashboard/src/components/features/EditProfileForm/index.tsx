@@ -308,7 +308,7 @@ export const EditProfileForm = ({ user, token = '' }: EditProfileFormProps) => {
                 )}
               />
 
-              <div className="flex justify-end mt-3">
+              <div className="flex justify-center md:justify-end mt-3">
                 <Button
                   type="submit"
                   className="w-[190px] h-[50px]"
