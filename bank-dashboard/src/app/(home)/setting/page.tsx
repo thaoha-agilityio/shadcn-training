@@ -7,7 +7,7 @@ import {
   PreferencesTab,
   SecurityTab,
 } from '@/components/features';
-import { Tabs } from '@/components/ui/Tabs';
+import { Tabs } from '@/components/common';
 
 // Services
 import { getUserLoggedIn } from '@/services';

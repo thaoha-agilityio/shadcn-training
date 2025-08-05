@@ -2,10 +2,12 @@ import { Metadata } from 'next';
 import { cookies } from 'next/headers';
 
 // Components
-import { StatByType } from '@/components/common/StatByType';
-import { MyCard, TransactionList } from '@/components/features';
-import { TransactionItem } from '@/components/features/Transactions/TransactionItem';
-import { Tabs } from '@/components/ui/Tabs';
+import {
+  MyCard,
+  TransactionList,
+  TransactionItem,
+} from '@/components/features';
+import { Tabs, StatByType } from '@/components/common';
 
 // Constants
 import { PRICE_TYPE } from '@/constants';

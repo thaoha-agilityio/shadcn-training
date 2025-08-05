@@ -4,7 +4,8 @@ import { ChangeEvent, useRef, useState } from 'react';
 
 // Components
 import { EditIcon } from '@/components/icons';
-import { Input, Avatar, Button } from '@/components/ui';
+import { Avatar, Button } from '@/components/ui';
+import { Input } from '@/components/common';
 
 interface AvatarUploadProps {
   src: string;

@@ -23,6 +23,14 @@ export function middleware(request: NextRequest) {
     (route) => pathname === route || pathname.startsWith(`${route}/`),
   );
 
+  if (pathname === '/' && isAuthenticated) {
+    return NextResponse.redirect(new URL(API_ENDPOINT.DASHBOARD, request.url));
+  }
+
+  if (pathname === '/' && !isAuthenticated) {
+    return NextResponse.redirect(new URL(API_ENDPOINT.LOGIN, request.url));
+  }
+
   // Redirect unauthenticated users trying to access private routes
   if (isPrivateRoute && !isAuthenticated) {
     return NextResponse.redirect(new URL(API_ENDPOINT.LOGIN, request.url));
