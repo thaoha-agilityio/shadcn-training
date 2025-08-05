@@ -13,6 +13,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/Popover';
+import { SidebarTrigger } from '@/components/ui/Sidebar';
 
 // Services
 import { logout } from '@/services';
@@ -39,6 +40,7 @@ export const HeaderHome = ({ avatar, fullName }: HeaderHomeProps) => {
 
   return (
     <div className="flex justify-between items-center py-4 px-3 md:px-4">
+      <SidebarTrigger />
       <div className="flex flex-1/2 justify-center md:justify-start">
         <h1 className="text-title text-center text-2xl font-semibold capitalize">
           {removeLeadingSlash(path)}

@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 import {
   Sidebar,
   SidebarContent,
@@ -19,6 +21,7 @@ import { usePathname } from 'next/navigation';
 
 export const AppSidebar = () => {
   const path = usePathname();
+
   return (
     <Sidebar>
       <SidebarHeader className="p-5 pb-0">
@@ -28,14 +31,18 @@ export const AppSidebar = () => {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu className="py-2">
-              {LINKS.map(({ name, href, icon }) => {
+              {LINKS.map(({ name, href, icon, disable }) => {
                 const Icon = icon;
                 const isActive = path === href;
 
                 return (
                   <SidebarMenuItem key={name}>
-                    <SidebarMenuButton asChild isActive={isActive}>
-                      <a
+                    <SidebarMenuButton
+                      asChild
+                      isActive={isActive}
+                      className={disable ? 'pointer-events-none' : ''}
+                    >
+                      <Link
                         href={href}
                         className={cn(
                           'relative flex items-center gap-5 h-[60px] px-4 text-sm transition-colors',
@@ -48,7 +55,7 @@ export const AppSidebar = () => {
                       >
                         <Icon {...(isActive && { color: '#1814F3' })} />
                         <span>{name}</span>
-                      </a>
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 );
