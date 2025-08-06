@@ -11,6 +11,7 @@ import { Tabs } from '@/components/common';
 
 // Services
 import { getUserLoggedIn } from '@/services';
+import { COOKIE_KEYS } from '@/constants';
 
 export const metadata: Metadata = {
   title: 'Setting',
@@ -23,8 +24,8 @@ export const metadata: Metadata = {
 
 const SettingPage = async () => {
   const cookieStore = await cookies();
-  const userId = cookieStore.get('userId')?.value || '';
-  const token = cookieStore.get('token')?.value || '';
+  const userId = cookieStore.get(COOKIE_KEYS.USER_ID)?.value || '';
+  const token = cookieStore.get(COOKIE_KEYS.TOKEN)?.value || '';
   const { data: user } = await getUserLoggedIn(token, userId);
 
   const TABS_DATA = [

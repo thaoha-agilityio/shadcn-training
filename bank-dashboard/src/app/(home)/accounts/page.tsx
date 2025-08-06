@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { cookies } from 'next/headers';
+import { Suspense } from 'react';
 
 // Components
 import {
@@ -11,11 +12,10 @@ import { Tabs, StatByType } from '@/components/common';
 import { TransactionSkeleton } from '@/components/ui';
 
 // Constants
-import { PRICE_TYPE } from '@/constants';
+import { COOKIE_KEYS, PRICE_TYPE } from '@/constants';
 
 // Services
 import { getCardDetails, getTransactionList } from '@/services';
-import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'Account',
@@ -38,7 +38,7 @@ const Accounts = async ({
   // Fetch transactions and card details
   const { data: transactions } = await getTransactionList(1, 3);
   const cookieStore = await cookies();
-  const userId = cookieStore.get('userId')?.value || '';
+  const userId = cookieStore.get(COOKIE_KEYS.USER_ID)?.value || '';
   const { data: cardDetails } = await getCardDetails(userId);
   const {
     cardNumber = '',

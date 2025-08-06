@@ -1,3 +1,7 @@
+'use server';
+
+import { cookies } from 'next/headers';
+
 // Types
 import { LoginPayload, LoginResponse } from '@/types';
 
@@ -5,19 +9,18 @@ import { LoginPayload, LoginResponse } from '@/types';
 import { apiClient, FailedResponse, SuccessResponse } from './apiRequest';
 
 // Constants
-import { API_ROUTE_ENDPOINT, DOMAIN, ERROR_MESSAGES } from '@/constants';
+import { API_ENDPOINT, COOKIE_KEYS, ERROR_MESSAGES } from '@/constants';
 
 export const login = async (
   payload: LoginPayload,
 ): Promise<SuccessResponse<LoginResponse> | FailedResponse> => {
   try {
     const { data, error } = await apiClient.post<LoginResponse>(
-      API_ROUTE_ENDPOINT.LOGIN,
+      API_ENDPOINT.LOGIN,
       {
         body: {
           ...payload,
         },
-        baseUrl: DOMAIN,
       },
     );
 
@@ -27,6 +30,26 @@ export const login = async (
         error: error,
       };
     }
+
+    const { accessToken, user } = data as LoginResponse;
+
+    // Set cookies
+    const cookieStore = await cookies();
+    cookieStore.set(COOKIE_KEYS.TOKEN, accessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      path: '/',
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24,
+    });
+
+    cookieStore.set(COOKIE_KEYS.USER_ID, String(user.id), {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      path: '/',
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24,
+    });
 
     return {
       data,
@@ -44,9 +67,11 @@ export const login = async (
 };
 
 export const logout = async () => {
-  try {
-    await apiClient.post(API_ROUTE_ENDPOINT.LOGOUT, { baseUrl: DOMAIN });
-  } catch (error) {
-    return error;
-  }
+  const cookieStore = await cookies();
+
+  // Delete cookies
+  cookieStore.delete(COOKIE_KEYS.TOKEN);
+  cookieStore.delete(COOKIE_KEYS.USER_ID);
+
+  return { success: true };
 };
