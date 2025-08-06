@@ -13,6 +13,9 @@ import {
 // Services
 import { getCardDetails, getTransactionList } from '@/services';
 
+// Constants
+import { COOKIE_KEYS } from '@/constants';
+
 export const metadata: Metadata = {
   title: 'Dashboard',
   description: 'Dashboard page for Bank Dashboard',
@@ -24,7 +27,7 @@ export const metadata: Metadata = {
 
 export default async function DashboardPage() {
   const cookieStore = await cookies();
-  const userId = cookieStore.get('userId')?.value || '';
+  const userId = cookieStore.get(COOKIE_KEYS.USER_ID)?.value || '';
 
   const { data: cardDetails } = await getCardDetails(userId);
   const {

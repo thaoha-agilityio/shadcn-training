@@ -7,6 +7,7 @@ import { SidebarProvider } from '@/components/ui/Sidebar';
 
 // Services
 import { getUserLoggedIn } from '@/services';
+import { COOKIE_KEYS } from '@/constants';
 
 export default async function HomeLayout({
   children,
@@ -14,8 +15,8 @@ export default async function HomeLayout({
   children: React.ReactNode;
 }>) {
   const cookieStore = await cookies();
-  const token = cookieStore.get('token')?.value || '';
-  const userId = cookieStore.get('userId')?.value || '';
+  const token = cookieStore.get(COOKIE_KEYS.TOKEN)?.value || '';
+  const userId = cookieStore.get(COOKIE_KEYS.USER_ID)?.value || '';
 
   const { data: user } = await getUserLoggedIn(token, userId);
 
