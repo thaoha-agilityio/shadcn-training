@@ -1,5 +1,5 @@
 import { ComponentProps } from 'react';
-import Link from 'next/link';
+
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -35,22 +35,22 @@ const PaginationItem = ({ ...props }: ComponentProps<'li'>) => (
 type PaginationLinkProps = {
   isActive?: boolean;
   children?: React.ReactNode;
-} & Pick<ComponentProps<typeof Link>, 'href'> & // ✅ Use Link props
-  Pick<ComponentProps<'a'>, 'className'> & // Optional for styling
-  Pick<ComponentProps<typeof Button>, 'size'>;
+  size?: 'default' | 'sm' | 'lg';
+} & Pick<ComponentProps<typeof Button>, 'onClick' | 'className' | 'type'>;
 
 const PaginationLink = ({
   isActive,
-  size = 'default',
-  className,
-  href,
   children,
+  className,
+  type = 'button',
+  size = 'default',
+  onClick,
   ...props
 }: PaginationLinkProps) => {
   return (
-    <Link
-      href={href}
-      scroll={false} // ✅ Prevent scroll jump
+    <button
+      type={type}
+      onClick={onClick}
       aria-current={isActive ? 'page' : undefined}
       data-slot="pagination-link"
       data-active={isActive}
@@ -66,9 +66,10 @@ const PaginationLink = ({
       {...props}
     >
       {children}
-    </Link>
+    </button>
   );
 };
+
 interface PaginationArrowProps extends ComponentProps<typeof PaginationLink> {
   isDisabled?: boolean;
   isPrevious?: boolean;

@@ -1,15 +1,23 @@
 import { Skeleton } from '.';
 
 export const TransactionSkeleton = () => (
-  <div className="divide-y rounded-xl border">
+  <div className="bg-card rounded-2xl border border-secondary px-5 py-4">
+    <div className="grid grid-cols-6 p-3 text-xs font-medium text-helper">
+      <div>Description</div>
+      <div>Transaction ID</div>
+      <div>Type</div>
+      <div>Card</div>
+      <div>Date</div>
+      <div>Amount</div>
+      <div></div>
+    </div>
     {Array.from({ length: 5 }).map((_, i) => (
-      <div key={i} className="flex items-center gap-4 px-4 py-3">
+      <div key={i} className="grid grid-cols-6 gap-4 px-4 py-3 items-baseline">
         {/* Icon */}
-        <Skeleton className="h-6 w-6 rounded-full" />
 
-        {/* Description & ID */}
-        <div className="flex-1">
-          <Skeleton className="h-4 w-40 mb-1" />
+        <div className="flex items-center gap-2">
+          <Skeleton className="h-5 w-5 rounded-full" />
+          <Skeleton className="h-4 w-40" />
         </div>
 
         {/* Type */}

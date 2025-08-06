@@ -1,10 +1,12 @@
 'use client';
 
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useTransition } from 'react';
 
 // Components
 import { columns } from './columns';
 import { DataTable, Pagination } from '@/components/common';
+import { TransactionSkeleton } from '@/components/ui';
 
 // Constants
 import { PAGINATION_LIMIT, SEARCH_PARAMS } from '@/constants';
@@ -26,32 +28,41 @@ export function Transactions({
   transactions,
   totalCount = 0,
 }: TransactionListProps) {
+  const [isPending, startTransition] = useTransition();
+
+  const searchParams = useSearchParams() ?? '';
+  const pathname = usePathname() ?? '';
+  const { replace } = useRouter();
+
+  const totalPages = calculateTotalPages(totalCount, PAGINATION_LIMIT);
+  const currentPage = Number(searchParams.get(SEARCH_PARAMS.PAGE)) || 1;
+
   const transactionsWithCardNumber = (transactions || []).map((tx) => ({
     ...tx,
     cardNumber,
   }));
 
-  const totalPages = calculateTotalPages(totalCount, PAGINATION_LIMIT);
-
-  const searchParams = useSearchParams() ?? '';
-  const pathname = usePathname() ?? '';
-  const currentPage = Number(searchParams.get(SEARCH_PARAMS.PAGE)) || 1;
-
-  const createPageURL = (pageNumber: number | string) => {
+  const handlePageChange = (page: number) => {
     const params = new URLSearchParams(searchParams);
-    params.set(SEARCH_PARAMS.PAGE, pageNumber.toString());
+    params.set(SEARCH_PARAMS.PAGE, page.toString());
 
-    return `${pathname}?${params.toString()}`;
+    startTransition(() => {
+      replace(`${pathname}?${params}`);
+    });
   };
 
   return (
     <div>
-      <DataTable columns={columns} data={transactionsWithCardNumber || []} />
+      {isPending ? (
+        <TransactionSkeleton />
+      ) : (
+        <DataTable columns={columns} data={transactionsWithCardNumber || []} />
+      )}
 
       <Pagination
         totalPages={totalPages}
-        createPageURL={createPageURL}
         currentPage={currentPage}
+        onPageChange={handlePageChange}
       />
     </div>
   );
