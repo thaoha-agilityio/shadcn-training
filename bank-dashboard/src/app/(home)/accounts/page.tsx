@@ -92,7 +92,7 @@ const Accounts = async ({
           type={PRICE_TYPE.SAVING}
         />
       </div>
-      <div className="flex flex-col md:flex-row gap-10 mt-5 items-center">
+      <div className="flex flex-col md:flex-row gap-10 mt-5 md:items-center">
         {/* Last Transaction */}
         <div className="flex-2/3">
           <p className={titleStyle}>Last Transaction</p>

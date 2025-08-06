@@ -16,7 +16,7 @@ export const TransactionSkeleton = () => (
         {/* Icon */}
 
         <div className="flex items-center gap-2">
-          <Skeleton className="h-5 w-5 rounded-full" />
+          <Skeleton className="size-5 rounded-full" />
           <Skeleton className="h-4 w-40" />
         </div>
 

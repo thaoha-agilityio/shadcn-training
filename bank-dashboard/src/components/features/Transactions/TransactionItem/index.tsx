@@ -52,7 +52,7 @@ export const TransactionItem = ({
   return (
     <div className="flex justify-between items-center">
       <div
-        className={`w-10 h-10 rounded-full bg-${bgColor} flex justify-center items-center`}
+        className={`size-10 rounded-full bg-${bgColor} flex justify-center items-center`}
       >
         <SelectedIcon />
       </div>

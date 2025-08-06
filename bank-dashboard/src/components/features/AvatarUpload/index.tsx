@@ -41,10 +41,10 @@ export const AvatarUpload = ({
         <Avatar
           src={previewUrl}
           contentFallback="sc"
-          extraStyle="w-[130px] h-[130px] rounded-full"
+          extraStyle="size-[130px] rounded-full"
         />
         <Button
-          className="w-[30px] h-[30px] rounded-full absolute bottom-0 right-0"
+          className="size-[30px] rounded-full absolute bottom-0 right-0"
           type="button"
           onClick={triggerUpload}
         >

@@ -3,8 +3,8 @@ import { Skeleton } from '.';
 export const EditProfileSkeleton = () => (
   <div className="flex flex-col md:flex-row items-center md:items-start gap-9 mt-5">
     {/* Avatar */}
-    <div className="">
-      <Skeleton className="w-[130px] h-[130px] rounded-full" />
+    <div>
+      <Skeleton className="size-[130px] rounded-full" />
     </div>
 
     <div className="flex gap-7 flex-col md:flex-row w-full flex-1">

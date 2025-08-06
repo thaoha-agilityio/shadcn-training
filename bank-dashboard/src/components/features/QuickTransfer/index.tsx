@@ -12,7 +12,7 @@ export const QuickTransfer = () => (
     <div className="flex gap-10">
       {QUICK_TRANSFER_DATA.map(({ id, name, role, img }) => (
         <div key={id} className="flex flex-col items-center">
-          <Avatar src={img} extraStyle="w-[70px] h-[70px] rounded-full" />
+          <Avatar src={img} extraStyle="size-[70px] rounded-full" />
           <p className="text-md">{name}</p>
           <p className="text-helper text-sm">{role}</p>
         </div>

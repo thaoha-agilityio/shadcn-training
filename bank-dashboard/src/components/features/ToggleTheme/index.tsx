@@ -15,7 +15,7 @@ export const ToggleTheme = () => {
     <Button
       onClick={handleToggle}
       variant="secondary"
-      className="w-10 h-10 rounded-full"
+      className="size-10 rounded-full"
     >
       {theme === 'dark' ? (
         <Sun style={{ height: '24px', width: '24px' }} />
