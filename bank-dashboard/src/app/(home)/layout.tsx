@@ -20,13 +20,12 @@ export default async function HomeLayout({
   const { data: user } = await getUserLoggedIn(token, userId);
 
   const { avatar = '', firstName = '', lastName = '' } = user || {};
-  const fullName = `${firstName} ${lastName}`;
 
   return (
     <SidebarProvider>
       <AppSidebar />
       <div className="flex flex-col w-full min-h-screen">
-        <HeaderHome avatar={avatar} fullName={fullName} />
+        <HeaderHome avatar={avatar} fullName={`${firstName} ${lastName}`} />
         <div className="bg-secondary h-full">{children}</div>
       </div>
     </SidebarProvider>

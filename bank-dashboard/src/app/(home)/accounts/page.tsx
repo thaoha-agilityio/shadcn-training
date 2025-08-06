@@ -8,6 +8,7 @@ import {
   TransactionItem,
 } from '@/components/features';
 import { Tabs, StatByType } from '@/components/common';
+import { TransactionSkeleton } from '@/components/ui';
 
 // Constants
 import { PRICE_TYPE } from '@/constants';
@@ -15,7 +16,6 @@ import { PRICE_TYPE } from '@/constants';
 // Services
 import { getCardDetails, getTransactionList } from '@/services';
 import { Suspense } from 'react';
-import { TransactionSkeleton } from '@/components/ui';
 
 export const metadata: Metadata = {
   title: 'Account',
@@ -78,7 +78,7 @@ const Accounts = async ({
 
   return (
     <div className="py-7 px-6">
-      <div className="flex justify-between flex-wrap gap-2 md:gap-6">
+      <div className="flex justify-between flex-wrap md:flex-nowrap gap-2 md:gap-7">
         <StatByType
           total={balance}
           label="My balance"
@@ -92,7 +92,7 @@ const Accounts = async ({
           type={PRICE_TYPE.SAVING}
         />
       </div>
-      <div className="flex flex-col md:flex-row gap-10 mt-5">
+      <div className="flex flex-col md:flex-row gap-10 mt-5 items-center">
         {/* Last Transaction */}
         <div className="flex-2/3">
           <p className={titleStyle}>Last Transaction</p>

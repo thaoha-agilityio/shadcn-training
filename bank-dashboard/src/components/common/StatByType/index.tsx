@@ -44,7 +44,7 @@ export const StatByType = ({ total, label, type }: StatByTypeProps) => {
   const { color, icon } = ICON_MAPPING[type];
 
   return (
-    <div className="flex gap-3 p-5 rounded-[20px] w-[140px] md:w-[190px] bg-card shadow-md items-center">
+    <div className="flex gap-3 p-5 rounded-[20px] w-[140px] md:w-full bg-card shadow-md items-center">
       <div
         className={`${color} w-[50px] h-[50px] md:w-[70px] md:h-[70px] rounded-full p-2 md:p-5`}
       >
