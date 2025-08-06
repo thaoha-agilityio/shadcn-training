@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 // Components
 import { columns } from './columns';
@@ -14,6 +14,8 @@ import { TransactionInfo } from '@/types';
 
 // Utils
 import { calculateTotalPages } from '@/utils';
+import { useTransition } from 'react';
+import { TransactionSkeleton } from '@/components/ui';
 
 type TransactionListProps = {
   cardNumber: string;
@@ -26,16 +28,19 @@ export function Transactions({
   transactions,
   totalCount = 0,
 }: TransactionListProps) {
+  const [isPending, startTransition] = useTransition();
+
+  const router = useRouter();
+  const searchParams = useSearchParams() ?? '';
+  const pathname = usePathname() ?? '';
+  const { replace } = useRouter();
+  const totalPages = calculateTotalPages(totalCount, PAGINATION_LIMIT);
+  const currentPage = Number(searchParams.get(SEARCH_PARAMS.PAGE)) || 1;
+
   const transactionsWithCardNumber = (transactions || []).map((tx) => ({
     ...tx,
     cardNumber,
   }));
-
-  const totalPages = calculateTotalPages(totalCount, PAGINATION_LIMIT);
-
-  const searchParams = useSearchParams() ?? '';
-  const pathname = usePathname() ?? '';
-  const currentPage = Number(searchParams.get(SEARCH_PARAMS.PAGE)) || 1;
 
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams);
@@ -44,14 +49,28 @@ export function Transactions({
     return `${pathname}?${params.toString()}`;
   };
 
+  const handlePageChange = (page: number) => {
+    const params = new URLSearchParams(searchParams);
+    params.set(SEARCH_PARAMS.PAGE, page.toString());
+
+    startTransition(() => {
+      replace(`${pathname}?${params}`);
+    });
+  };
+
   return (
     <div>
-      <DataTable columns={columns} data={transactionsWithCardNumber || []} />
+      {isPending ? (
+        <TransactionSkeleton />
+      ) : (
+        <DataTable columns={columns} data={transactionsWithCardNumber || []} />
+      )}
 
       <Pagination
         totalPages={totalPages}
         createPageURL={createPageURL}
         currentPage={currentPage}
+        onPageChange={handlePageChange}
       />
     </div>
   );

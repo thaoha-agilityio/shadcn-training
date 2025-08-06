@@ -27,7 +27,7 @@ export const PreferencesTab = () => (
       </div>
     </div>
 
-    <div className="flex justify-end">
+    <div className="flex justify-center md:justify-end mt-5">
       <Button type="submit" className="w-[190px] text-base h-[50px]">
         Save
       </Button>
