@@ -1,10 +1,12 @@
 'use client';
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useTransition } from 'react';
 
 // Components
 import { columns } from './columns';
 import { DataTable, Pagination } from '@/components/common';
+import { TransactionSkeleton } from '@/components/ui';
 
 // Constants
 import { PAGINATION_LIMIT, SEARCH_PARAMS } from '@/constants';
@@ -14,8 +16,6 @@ import { TransactionInfo } from '@/types';
 
 // Utils
 import { calculateTotalPages } from '@/utils';
-import { useTransition } from 'react';
-import { TransactionSkeleton } from '@/components/ui';
 
 type TransactionListProps = {
   cardNumber: string;
@@ -30,10 +30,10 @@ export function Transactions({
 }: TransactionListProps) {
   const [isPending, startTransition] = useTransition();
 
-  const router = useRouter();
   const searchParams = useSearchParams() ?? '';
   const pathname = usePathname() ?? '';
   const { replace } = useRouter();
+
   const totalPages = calculateTotalPages(totalCount, PAGINATION_LIMIT);
   const currentPage = Number(searchParams.get(SEARCH_PARAMS.PAGE)) || 1;
 
@@ -41,13 +41,6 @@ export function Transactions({
     ...tx,
     cardNumber,
   }));
-
-  const createPageURL = (pageNumber: number | string) => {
-    const params = new URLSearchParams(searchParams);
-    params.set(SEARCH_PARAMS.PAGE, pageNumber.toString());
-
-    return `${pathname}?${params.toString()}`;
-  };
 
   const handlePageChange = (page: number) => {
     const params = new URLSearchParams(searchParams);
@@ -68,7 +61,6 @@ export function Transactions({
 
       <Pagination
         totalPages={totalPages}
-        createPageURL={createPageURL}
         currentPage={currentPage}
         onPageChange={handlePageChange}
       />

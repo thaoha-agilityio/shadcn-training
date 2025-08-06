@@ -13,51 +13,53 @@ import { generatePagination } from '@/utils';
 interface PaginationProps {
   totalPages: number;
   currentPage: number;
-  createPageURL: (page: number | string) => string;
+  onPageChange: (page: number) => void;
 }
 
 export const Pagination = ({
   totalPages,
   currentPage,
-  createPageURL,
+  onPageChange,
 }: PaginationProps) => {
   const allPages = generatePagination(currentPage, totalPages);
 
   return (
     <PaginationWrapper className="mt-7">
       <PaginationContent>
+        {/* Previous button */}
         <PaginationItem>
           <PaginationArrow
             isPrevious
-            href={createPageURL(currentPage - 1)}
             isDisabled={currentPage === 1}
+            onClick={() => onPageChange(currentPage - 1)}
           />
         </PaginationItem>
 
+        {/* Page number buttons */}
         {allPages.map((page, index) => {
           const isEllipsis = page === '...';
 
           return (
-            <div key={`${page}-${index}`}>
-              <PaginationItem key={`${page}-${index}`}>
-                {isEllipsis ? (
-                  <PaginationEllipsis />
-                ) : (
-                  <PaginationLink
-                    href={createPageURL(page)}
-                    isActive={currentPage === page}
-                  >
-                    {page}
-                  </PaginationLink>
-                )}
-              </PaginationItem>
-            </div>
+            <PaginationItem key={`${page}-${index}`}>
+              {isEllipsis ? (
+                <PaginationEllipsis />
+              ) : (
+                <PaginationLink
+                  isActive={currentPage === page}
+                  onClick={() => onPageChange(+page)}
+                >
+                  {page}
+                </PaginationLink>
+              )}
+            </PaginationItem>
           );
         })}
+
+        {/* Next button */}
         <PaginationItem>
           <PaginationArrow
-            href={createPageURL(currentPage + 1)}
             isDisabled={currentPage === totalPages}
+            onClick={() => onPageChange(currentPage + 1)}
           />
         </PaginationItem>
       </PaginationContent>

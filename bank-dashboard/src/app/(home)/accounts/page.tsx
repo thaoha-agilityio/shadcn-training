@@ -14,6 +14,8 @@ import { PRICE_TYPE } from '@/constants';
 
 // Services
 import { getCardDetails, getTransactionList } from '@/services';
+import { Suspense } from 'react';
+import { TransactionSkeleton } from '@/components/ui';
 
 export const metadata: Metadata = {
   title: 'Account',
@@ -57,7 +59,9 @@ const Accounts = async ({
       value: 'all_transactions',
       label: 'All Transactions',
       content: (
-        <TransactionList cardNumber={cardNumber} currentPage={currentPage} />
+        <Suspense fallback={<TransactionSkeleton />}>
+          <TransactionList cardNumber={cardNumber} currentPage={currentPage} />
+        </Suspense>
       ),
     },
     {
