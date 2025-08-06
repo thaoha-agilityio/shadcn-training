@@ -17,8 +17,6 @@
 - React 19
 - Next.js 15
 - Typescript
-- Zustand
-- React Query
 - Jest
 - Testing-library/react
 
