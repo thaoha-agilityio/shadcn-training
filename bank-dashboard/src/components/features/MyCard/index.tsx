@@ -1,4 +1,5 @@
 // Components
+import { Typography } from '@/components/common';
 import { ChipCardIcon, VisaIcon } from '@/components/icons';
 import { cn } from '@/lib/utils';
 
@@ -27,24 +28,32 @@ export const MyCard = ({
       className={cn(
         'min-w-[265px] h-[180px] rounded-2xl pt-4 ',
         isColor
-          ? 'text-white bg-gradient-to-r from-[#4C49ED] to-[#0A06F4]'
+          ? 'text-white bg-gradient-to-r from-warm-blue to-primary'
           : 'text-title bg-card border-2 border-catskill-white',
       )}
     >
       <div className="flex justify-between items-center px-5">
         <div>
-          <p className={cn('text-xs', classTitle)}>Balance</p>
-          <p className="font-semibold text-md">
+          <Typography className={classTitle}>Balance</Typography>
+          <Typography variant="h4" className="font-semibold">
             {formatCurrency(totalBalance)}
-          </p>
+          </Typography>
         </div>
         <ChipCardIcon />
       </div>
       <div className="mt-[23px] mb-4 grid grid-cols-2 gap-x-10 px-5">
-        <p className={cn('uppercase text-[10px]', classTitle)}>card holder</p>
-        <p className={cn('uppercase text-[10px]', classTitle)}>valid thur</p>
-        <p className="text-sm font-semibold">{username}</p>
-        <p className="text-sm font-semibold">{validDate}</p>
+        <Typography variant="label" className={classTitle}>
+          card holder
+        </Typography>
+        <Typography variant="label" className={classTitle}>
+          valid thur
+        </Typography>
+        <Typography variant="h4" className="text-sm">
+          {username}
+        </Typography>
+        <Typography variant="h4" className="text-sm">
+          {validDate}
+        </Typography>
       </div>
       <div
         className={cn(
@@ -53,7 +62,7 @@ export const MyCard = ({
         )}
       >
         <p>{formatCardNumber(cardNumber.toString())}</p>
-        <VisaIcon {...(!isColor && { color: '#9199AF' })} />
+        <VisaIcon className={isColor ? 'text-white' : 'text-visa'} />
       </div>
     </div>
   );

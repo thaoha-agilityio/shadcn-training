@@ -8,7 +8,7 @@ import {
   TransactionList,
   TransactionItem,
 } from '@/components/features';
-import { Tabs, StatByType } from '@/components/common';
+import { Tabs, StatByType, Typography } from '@/components/common';
 import { TransactionSkeleton } from '@/components/ui';
 
 // Constants
@@ -33,8 +33,6 @@ const Accounts = async ({
     page?: number;
   };
 }) => {
-  const titleStyle = 'text-title text-lg font-semibold';
-
   // Fetch transactions and card details
   const { data: transactions } = await getTransactionList(1, 3);
   const cookieStore = await cookies();
@@ -95,7 +93,7 @@ const Accounts = async ({
       <div className="flex flex-col md:flex-row gap-10 mt-5 md:items-center">
         {/* Last Transaction */}
         <div className="flex-2/3">
-          <p className={titleStyle}>Last Transaction</p>
+          <Typography variant="h2">Last Transaction</Typography>
           <div className="flex flex-col gap-3 rounded-xl bg-card min-w-[231px] p-[15px] mt-6">
             {transactions?.map(
               ({ id, description, createdAt, amount, status }, index) => (
@@ -116,7 +114,7 @@ const Accounts = async ({
 
         {/* My Cards */}
         <div>
-          <p className={titleStyle}>My Cards</p>
+          <Typography variant="h2">My Cards</Typography>
           <div className="mt-5">
             <MyCard
               isColor
@@ -131,7 +129,7 @@ const Accounts = async ({
 
       {/* Recent Transactions */}
       <div className="mt-5">
-        <p className={titleStyle}>Recent Transactions</p>
+        <Typography variant="h2">Recent Transactions</Typography>
         <Tabs tabs={TABS_DATA} />
       </div>
     </div>

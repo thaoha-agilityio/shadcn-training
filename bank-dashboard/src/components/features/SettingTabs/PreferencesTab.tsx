@@ -1,5 +1,5 @@
 import { Button, Switch } from '@/components/ui';
-import { Input } from '@/components/common';
+import { Input, Typography } from '@/components/common';
 
 export const PreferencesTab = () => (
   <form className="max-w-full space-y-6">
@@ -12,7 +12,7 @@ export const PreferencesTab = () => (
     </div>
 
     <div className="space-y-4">
-      <h3 className="text-base font-semibold text-heading">Notification</h3>
+      <Typography variant="h3">Notification</Typography>
       <div className="flex items-center gap-4">
         <Switch checked />
         <label>I send or receive digital currency</label>
@@ -22,7 +22,7 @@ export const PreferencesTab = () => (
         <label>I receive merchant order</label>
       </div>
       <div className="flex items-center gap-4">
-        <Switch checked={true} />
+        <Switch checked={false} />
         <label>There are recommendation for my account</label>
       </div>
     </div>

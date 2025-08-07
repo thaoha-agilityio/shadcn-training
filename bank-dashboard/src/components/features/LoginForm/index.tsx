@@ -9,7 +9,7 @@ import { z } from 'zod';
 import { toast } from 'sonner';
 
 // Components
-import { Input } from '@/components/common';
+import { Input, Typography } from '@/components/common';
 import { Form, FormField } from '@/components/ui/form';
 import { PasswordInput } from '@/components/common';
 
@@ -89,7 +89,9 @@ export const LoginForm = () => {
 
   return (
     <div className="max-w-[500px] w-full border p-6 rounded-2xl bg-card">
-      <h2 className="text-center text-md font-medium">Login</h2>
+      <Typography variant="h2" className="text-center">
+        Login
+      </Typography>
 
       <Form {...form}>
         <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>

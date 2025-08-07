@@ -63,6 +63,8 @@
   --color-secondary: var(--secondary);
   --color-positive: var(--positive);
   --color-heading: var(--heading);
+  --color-visa: var(--visa);
+  --color-warm-blue: var(--warm-blue);
 }
 
 :root {
@@ -110,6 +112,7 @@
 
   --disabled: #B1B1B1;
   --polo-blue: #8BA3CB;
+  --warm-blue: #4C49ED;
   --tickle-pink: #FF82AC
   --balance: #FFBB38;
   --income: #396AFF;
@@ -119,6 +122,7 @@
   --download: #123288;
   --catskill-white: #DFEAF2;
   --positive: #16DBAA;
+  --visa:'#9199AF';
 
   /* Custom background color*/
   --bg-balance: #FFF5D9;

@@ -5,7 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 
 // Components
 import { ToggleTheme } from '@/components/features';
-import { Input } from '@/components/common';
+import { Input, Typography } from '@/components/common';
 import { Avatar } from '@/components/ui/Avatar';
 import { Button } from '@/components/ui/Button';
 import {
@@ -42,9 +42,9 @@ export const HeaderHome = ({ avatar, fullName }: HeaderHomeProps) => {
     <div className="flex justify-between items-center py-4 px-3 md:px-4">
       <SidebarTrigger />
       <div className="flex flex-1/2 justify-center md:justify-start">
-        <h1 className="text-title text-center text-2xl font-semibold capitalize">
+        <Typography variant="h1" className="text-center">
           {removeLeadingSlash(path)}
-        </h1>
+        </Typography>
       </div>
 
       <div className="flex items-center gap-2 md:gap-5">
