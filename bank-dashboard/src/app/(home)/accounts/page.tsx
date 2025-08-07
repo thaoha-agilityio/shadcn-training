@@ -12,7 +12,7 @@ import { Tabs, StatByType, Typography } from '@/components/common';
 import { TransactionSkeleton } from '@/components/ui';
 
 // Constants
-import { COOKIE_KEYS, PRICE_TYPE } from '@/constants';
+import { COOKIE_KEYS, PRICE_TYPE, PREVIEW_IMAGE } from '@/constants';
 
 // Services
 import { getCardDetails, getTransactionList } from '@/services';
@@ -23,6 +23,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Account',
     description: 'Account page for Bank Dashboard',
+    images: [
+      {
+        url: PREVIEW_IMAGE,
+        alt: 'preview image',
+      },
+    ],
   },
 };
 

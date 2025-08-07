@@ -1,6 +1,7 @@
 export * from './api';
 export * from './chart';
 export * from './cookies';
+export * from './image';
 export * from './regex';
 export * from './links';
 export * from './messages';

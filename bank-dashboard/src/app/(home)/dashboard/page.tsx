@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { cookies } from 'next/headers';
 
+// Components
 import {
   BalanceHistoryChart,
   ExpensePieChart,
@@ -15,7 +16,7 @@ import { Typography } from '@/components/common';
 import { getCardDetails, getTransactionList } from '@/services';
 
 // Constants
-import { COOKIE_KEYS } from '@/constants';
+import { COOKIE_KEYS, PREVIEW_IMAGE } from '@/constants';
 
 export const metadata: Metadata = {
   title: 'Dashboard',
@@ -23,6 +24,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Dashboard',
     description: 'Dashboard page for Bank Dashboard',
+    images: [
+      {
+        url: PREVIEW_IMAGE,
+        alt: 'preview image',
+      },
+    ],
   },
 };
 

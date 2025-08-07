@@ -1,6 +1,10 @@
 import { Metadata } from 'next';
 
+// Components
 import { LoginForm } from '@/components/features';
+
+// Constants
+import { PREVIEW_IMAGE } from '@/constants';
 
 export const metadata: Metadata = {
   title: 'Login',
@@ -8,6 +12,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Login',
     description: 'Login page for Bank Dashboard',
+    images: [
+      {
+        url: PREVIEW_IMAGE,
+        alt: 'preview image',
+      },
+    ],
   },
 };
 
