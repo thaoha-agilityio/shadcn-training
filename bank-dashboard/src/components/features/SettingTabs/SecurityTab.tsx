@@ -1,23 +1,21 @@
 import { Button, Switch } from '@/components/ui';
-import { Input } from '@/components/common';
+import { Input, Typography } from '@/components/common';
 
 export const SecurityTab = () => (
   <form className="max-w-full">
     <div>
-      <h3 className="text-base font-semibold text-heading">
-        Two-factor Authentication
-      </h3>
+      <Typography variant="h3">Two-factor Authentication</Typography>
 
       <div className="flex items-center gap-4 mb-5 mt-4">
         <Switch checked />
-        <span className="text-sm ">
+        <Typography variant="span">
           Enable or disable two factor authentication
-        </span>
+        </Typography>
       </div>
     </div>
 
     <div>
-      <h3 className="text-base font-semibold text-heading">Change Password</h3>
+      <Typography variant="h3">Change Password</Typography>
       <div className="space-y-4 mt-4 w-full  md:w-[300px]">
         <Input
           label="Current Password"

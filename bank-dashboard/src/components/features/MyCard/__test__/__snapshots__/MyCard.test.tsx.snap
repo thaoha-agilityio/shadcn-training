@@ -6,22 +6,22 @@ exports[`MyCard Component renders card with colored gradient theme 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="min-w-[265px] h-[180px] rounded-2xl pt-4 text-white bg-gradient-to-r from-[#4C49ED] to-[#0A06F4]"
+        class="min-w-[265px] h-[180px] rounded-2xl pt-4 text-white bg-gradient-to-r from-warm-blue to-primary"
       >
         <div
           class="flex justify-between items-center px-5"
         >
           <div>
             <p
-              class="text-xs text-white"
+              class="font-normal text-xs text-white"
             >
               Balance
             </p>
-            <p
-              class="font-semibold text-md"
+            <h4
+              class="text-md font-semibold"
             >
               $1,235
-            </p>
+            </h4>
           </div>
           <svg
             fill="none"
@@ -59,26 +59,26 @@ exports[`MyCard Component renders card with colored gradient theme 1`] = `
         <div
           class="mt-[23px] mb-4 grid grid-cols-2 gap-x-10 px-5"
         >
-          <p
-            class="uppercase text-[10px] text-white"
+          <label
+            class="font-normal uppercase text-[10px] text-white"
           >
             card holder
-          </p>
-          <p
-            class="uppercase text-[10px] text-white"
+          </label>
+          <label
+            class="font-normal uppercase text-[10px] text-white"
           >
             valid thur
-          </p>
-          <p
-            class="text-sm font-semibold"
+          </label>
+          <h4
+            class="font-medium text-sm"
           >
             John Doe
-          </p>
-          <p
-            class="text-sm font-semibold"
+          </h4>
+          <h4
+            class="font-medium text-sm"
           >
             12/29
-          </p>
+          </h4>
         </div>
         <div
           class="flex justify-between items-center h-[52px] py-4 border-t px-5 bg-white/20 rounded-b-2xl border-white/10"
@@ -87,6 +87,7 @@ exports[`MyCard Component renders card with colored gradient theme 1`] = `
             3778 **** **** 1234
           </p>
           <svg
+            class="text-white"
             fill="none"
             height="30"
             width="44"
@@ -95,14 +96,14 @@ exports[`MyCard Component renders card with colored gradient theme 1`] = `
             <circle
               cx="15"
               cy="15"
-              fill="#fff"
+              fill="currentColor"
               fill-opacity="0.5"
               r="15"
             />
             <circle
               cx="29"
               cy="15"
-              fill="#fff"
+              fill="currentColor"
               fill-opacity="0.5"
               r="15"
             />
@@ -113,22 +114,22 @@ exports[`MyCard Component renders card with colored gradient theme 1`] = `
   </body>,
   "container": <div>
     <div
-      class="min-w-[265px] h-[180px] rounded-2xl pt-4 text-white bg-gradient-to-r from-[#4C49ED] to-[#0A06F4]"
+      class="min-w-[265px] h-[180px] rounded-2xl pt-4 text-white bg-gradient-to-r from-warm-blue to-primary"
     >
       <div
         class="flex justify-between items-center px-5"
       >
         <div>
           <p
-            class="text-xs text-white"
+            class="font-normal text-xs text-white"
           >
             Balance
           </p>
-          <p
-            class="font-semibold text-md"
+          <h4
+            class="text-md font-semibold"
           >
             $1,235
-          </p>
+          </h4>
         </div>
         <svg
           fill="none"
@@ -166,26 +167,26 @@ exports[`MyCard Component renders card with colored gradient theme 1`] = `
       <div
         class="mt-[23px] mb-4 grid grid-cols-2 gap-x-10 px-5"
       >
-        <p
-          class="uppercase text-[10px] text-white"
+        <label
+          class="font-normal uppercase text-[10px] text-white"
         >
           card holder
-        </p>
-        <p
-          class="uppercase text-[10px] text-white"
+        </label>
+        <label
+          class="font-normal uppercase text-[10px] text-white"
         >
           valid thur
-        </p>
-        <p
-          class="text-sm font-semibold"
+        </label>
+        <h4
+          class="font-medium text-sm"
         >
           John Doe
-        </p>
-        <p
-          class="text-sm font-semibold"
+        </h4>
+        <h4
+          class="font-medium text-sm"
         >
           12/29
-        </p>
+        </h4>
       </div>
       <div
         class="flex justify-between items-center h-[52px] py-4 border-t px-5 bg-white/20 rounded-b-2xl border-white/10"
@@ -194,6 +195,7 @@ exports[`MyCard Component renders card with colored gradient theme 1`] = `
           3778 **** **** 1234
         </p>
         <svg
+          class="text-white"
           fill="none"
           height="30"
           width="44"
@@ -202,14 +204,14 @@ exports[`MyCard Component renders card with colored gradient theme 1`] = `
           <circle
             cx="15"
             cy="15"
-            fill="#fff"
+            fill="currentColor"
             fill-opacity="0.5"
             r="15"
           />
           <circle
             cx="29"
             cy="15"
-            fill="#fff"
+            fill="currentColor"
             fill-opacity="0.5"
             r="15"
           />

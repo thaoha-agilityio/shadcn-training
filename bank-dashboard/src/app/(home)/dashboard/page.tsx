@@ -9,6 +9,7 @@ import {
   WeeklyTransactionChart,
   TransactionItem,
 } from '@/components/features';
+import { Typography } from '@/components/common';
 
 // Services
 import { getCardDetails, getTransactionList } from '@/services';
@@ -39,13 +40,11 @@ export default async function DashboardPage() {
 
   const { data: transactions } = await getTransactionList(1, 3);
 
-  const titleStyle = 'text-title text-lg font-semibold';
-
   return (
     <div className="py-5 px-6">
       <div className="flex flex-col md:flex-row justify-between gap-10">
         <div className="flex-2/3">
-          <p className={titleStyle}>My Cards</p>
+          <Typography variant="h2">My Cards</Typography>
           <div className="flex flex-nowrap overflow-x-auto pt-4 overflow-y-hidden gap-10">
             <MyCard
               isColor
@@ -64,7 +63,7 @@ export default async function DashboardPage() {
         </div>
 
         <div className="flex-1/3">
-          <p className={titleStyle}>Recent Transaction</p>
+          <Typography variant="h2">Recent Transaction</Typography>
           <div className="flex flex-col gap-3 rounded-xl bg-card min-w-[231px] p-[15px] mt-5">
             {transactions?.map(
               ({ id, description, createdAt, amount }, index) => (
@@ -84,11 +83,11 @@ export default async function DashboardPage() {
       {/* Weekly Activity */}
       <div className="flex flex-col md:flex-row gap-10">
         <div className="mt-5 flex-2/3">
-          <p className={titleStyle}>Weekly Activity</p>
+          <Typography variant="h2">Weekly Activity</Typography>
           <WeeklyTransactionChart />
         </div>
         <div className="mt-5 flex-1/3">
-          <p className={titleStyle}>Expense Statistics</p>
+          <Typography variant="h2">Expense Statistics</Typography>
           <ExpensePieChart />
         </div>
       </div>
@@ -96,12 +95,12 @@ export default async function DashboardPage() {
       {/* Quick Transfer */}
       <div className="flex flex-col md:flex-row gap-10">
         <div className="mt-5 flex-1/3">
-          <p className={titleStyle}>Quick Transfer</p>
+          <Typography variant="h2">Quick Transfer</Typography>
           <QuickTransfer />
         </div>
 
         <div className="mt-5 flex-2/3">
-          <p className={titleStyle}>Balance History</p>
+          <Typography variant="h2">Balance History</Typography>
           <BalanceHistoryChart />
         </div>
       </div>
