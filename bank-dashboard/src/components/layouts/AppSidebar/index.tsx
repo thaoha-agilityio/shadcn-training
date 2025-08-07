@@ -56,7 +56,11 @@ export const AppSidebar = () => {
                           'data-[active=false]:before:content-none',
                         )}
                       >
-                        <Icon {...(isActive && { color: '#1814F3' })} />
+                        <Icon
+                          className={
+                            isActive ? 'text-primary' : 'text-sidebar-icon'
+                          }
+                        />
                         <span>{name}</span>
                       </Link>
                     </SidebarMenuButton>

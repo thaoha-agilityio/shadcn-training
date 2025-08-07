@@ -28,7 +28,7 @@ export const MyCard = ({
       className={cn(
         'min-w-[265px] h-[180px] rounded-2xl pt-4 ',
         isColor
-          ? 'text-white bg-gradient-to-r from-warm-blue to-primary'
+          ? 'text-white bg-gradient-to-r from-warm-blue to-primary-2'
           : 'text-title bg-card border-2 border-catskill-white',
       )}
     >

@@ -6,7 +6,7 @@ exports[`MyCard Component renders card with colored gradient theme 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="min-w-[265px] h-[180px] rounded-2xl pt-4 text-white bg-gradient-to-r from-warm-blue to-primary"
+        class="min-w-[265px] h-[180px] rounded-2xl pt-4 text-white bg-gradient-to-r from-warm-blue to-primary-2"
       >
         <div
           class="flex justify-between items-center px-5"
@@ -114,7 +114,7 @@ exports[`MyCard Component renders card with colored gradient theme 1`] = `
   </body>,
   "container": <div>
     <div
-      class="min-w-[265px] h-[180px] rounded-2xl pt-4 text-white bg-gradient-to-r from-warm-blue to-primary"
+      class="min-w-[265px] h-[180px] rounded-2xl pt-4 text-white bg-gradient-to-r from-warm-blue to-primary-2"
     >
       <div
         class="flex justify-between items-center px-5"
