@@ -10,7 +10,7 @@ import {
   ResponsiveContainer,
   CartesianGrid,
 } from 'recharts';
-import { Card, CardContent } from '@/components/ui/Card';
+import { Card, CardContent } from '@/components/common/Card';
 
 // Constants
 import { WEEKLY_DATA } from '@/constants';

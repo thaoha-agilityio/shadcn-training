@@ -14,7 +14,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@/components/ui/Sidebar';
+} from '@/components/common/Sidebar';
 import { LogoIcon } from '@/components/icons';
 
 // Constants

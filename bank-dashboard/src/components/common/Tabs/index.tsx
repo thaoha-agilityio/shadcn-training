@@ -2,12 +2,7 @@ import { ComponentProps } from 'react';
 import { cn } from '@/lib/utils';
 
 // Components
-import {
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-  TabsWrapper,
-} from '@/components/ui/Tabs';
+import { TabsContent, TabsList, TabsTrigger, TabsWrapper } from './tabs';
 
 // Types
 import { TabType } from '@/types';

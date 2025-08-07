@@ -5,15 +5,13 @@ import { useRouter, usePathname } from 'next/navigation';
 
 // Components
 import { ToggleTheme } from '@/components/features';
-import { Input, Typography } from '@/components/common';
-import { Avatar } from '@/components/ui/Avatar';
-import { Button } from '@/components/ui/Button';
+import { Input, Typography, Avatar, Button } from '@/components/common';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/Popover';
-import { SidebarTrigger } from '@/components/ui/Sidebar';
+} from '@/components/common/Popover';
+import { SidebarTrigger } from '@/components/common';
 
 // Services
 import { logout } from '@/services';

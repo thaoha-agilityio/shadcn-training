@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 // Components
 import { AppSidebar, HeaderHome } from '@/components/layouts';
 
-import { SidebarProvider } from '@/components/ui/Sidebar';
+import { SidebarProvider } from '@/components/common/Sidebar';
 
 // Services
 import { getUserLoggedIn } from '@/services';

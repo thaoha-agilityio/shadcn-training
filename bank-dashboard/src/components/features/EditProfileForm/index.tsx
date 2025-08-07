@@ -7,9 +7,13 @@ import { ChangeEvent, useState } from 'react';
 import { toast } from 'sonner';
 
 // Components
-import { Input, DatePicker } from '@/components/common';
-import { Button } from '@/components/ui/Button';
-import { FormField, Form } from '@/components/ui/form';
+import {
+  Input,
+  DatePicker,
+  FormField,
+  Form,
+  Button,
+} from '@/components/common';
 
 import { AvatarUpload } from '../AvatarUpload';
 
@@ -79,7 +83,7 @@ export const EditProfileForm = ({ user, token = '' }: EditProfileFormProps) => {
   });
 
   const {
-    formState: { errors },
+    formState: { errors, isDirty },
     clearErrors,
     handleSubmit,
     control,
@@ -313,7 +317,7 @@ export const EditProfileForm = ({ user, token = '' }: EditProfileFormProps) => {
                   type="submit"
                   className="w-[190px] h-[50px]"
                   isLoading={isPending}
-                  disabled={isPending}
+                  disabled={isPending || !isDirty}
                 >
                   Save
                 </Button>

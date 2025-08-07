@@ -8,8 +8,12 @@ import {
   TransactionList,
   TransactionItem,
 } from '@/components/features';
-import { Tabs, StatByType, Typography } from '@/components/common';
-import { TransactionSkeleton } from '@/components/ui';
+import {
+  Tabs,
+  StatByType,
+  Typography,
+  TransactionSkeleton,
+} from '@/components/common';
 
 // Constants
 import { COOKIE_KEYS, PRICE_TYPE, PREVIEW_IMAGE } from '@/constants';

@@ -13,15 +13,15 @@ import {
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from '@/components/ui/Sheet';
-import { Skeleton } from '@/components/ui/Skeleton';
+} from '@/components/common/Sheet';
+import { Skeleton } from '@/components/common/Skeleton';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/Tooltip';
-import { Button } from '@/components/ui/Button';
+} from '@/components/common/Tooltip';
+import { Button } from '@/components/common';
 import { NavBarIcon } from '@/components/icons';
 
 const SIDEBAR_COOKIE_NAME = 'sidebar_state';

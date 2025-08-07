@@ -5,7 +5,7 @@ import {
   PaginationItem,
   PaginationLink,
   PaginationWrapper,
-} from '@/components/ui/Pagination';
+} from './pagination';
 
 // Utils
 import { generatePagination } from '@/utils';
