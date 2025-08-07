@@ -6,7 +6,7 @@ exports[`LoginForm Component should renders correctly form 1`] = `
     class="max-w-[500px] w-full border p-6 rounded-2xl bg-card"
   >
     <h2
-      class="text-center text-md font-medium"
+      class="text-title text-lg font-semibold text-center"
     >
       Login
     </h2>
