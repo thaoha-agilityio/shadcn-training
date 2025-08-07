@@ -4,8 +4,7 @@ import { useState } from 'react';
 import { EyeClosedIcon, EyeIcon } from 'lucide-react';
 
 // Components
-import { Input, InputProps } from '@/components/common';
-import { Button } from '@/components/ui';
+import { Input, InputProps, Button } from '@/components/common';
 
 const PasswordInput = ({ ...props }: InputProps) => {
   const [isShowPassword, setIsShowPassword] = useState(false);

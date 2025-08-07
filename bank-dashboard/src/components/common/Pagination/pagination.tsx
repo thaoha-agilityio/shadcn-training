@@ -8,7 +8,7 @@ import {
 import { cn } from '@/lib/utils';
 
 // Components
-import { Button, buttonVariants } from '@/components/ui/Button';
+import { Button, buttonVariants } from '@/components/common';
 
 const PaginationWrapper = ({ className, ...props }: ComponentProps<'nav'>) => (
   <nav

@@ -7,7 +7,7 @@ import { TransactionInfo } from '@/types';
 
 // Components
 import { ArrowIcon } from '@/components/icons';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/common';
 
 // Utils
 import { formatCurrency, formatDate, maskCardNumber } from '@/utils';

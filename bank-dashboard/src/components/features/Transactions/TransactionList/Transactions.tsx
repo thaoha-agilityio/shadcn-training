@@ -5,8 +5,11 @@ import { useTransition } from 'react';
 
 // Components
 import { columns } from './columns';
-import { DataTable, Pagination } from '@/components/common';
-import { TransactionSkeleton } from '@/components/ui';
+import {
+  DataTable,
+  Pagination,
+  TransactionSkeleton,
+} from '@/components/common';
 
 // Constants
 import { PAGINATION_LIMIT, SEARCH_PARAMS } from '@/constants';

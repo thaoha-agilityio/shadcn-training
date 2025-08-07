@@ -1,8 +1,6 @@
 // Components
 import { SendIcon } from '@/components/icons';
-import { Input } from '@/components/common';
-import { Avatar } from '@/components/ui/Avatar';
-import { Button } from '@/components/ui/Button';
+import { Input, Avatar, Button } from '@/components/common';
 
 // Constants
 import { QUICK_TRANSFER_DATA } from '@/constants';

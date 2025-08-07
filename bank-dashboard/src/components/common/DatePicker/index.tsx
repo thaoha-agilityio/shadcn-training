@@ -9,9 +9,8 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/Popover';
-import { Button } from '@/components/ui/Button';
-import { Calendar } from '@/components/ui/Calendar';
+} from '@/components/common/Popover';
+import { Button, Calendar } from '@/components/common';
 
 interface DatePickerProps {
   value: Date | undefined;

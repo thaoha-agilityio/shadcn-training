@@ -1,6 +1,5 @@
 'use client';
 
-import { Button } from '../../ui/Button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { ChangeEvent, useState } from 'react';
@@ -9,9 +8,14 @@ import { z } from 'zod';
 import { toast } from 'sonner';
 
 // Components
-import { Input, Typography } from '@/components/common';
-import { Form, FormField } from '@/components/ui/form';
-import { PasswordInput } from '@/components/common';
+import {
+  Input,
+  Typography,
+  FormField,
+  Form,
+  PasswordInput,
+  Button,
+} from '@/components/common';
 
 // Constants
 import { AUTH_ROUTES, FORM_VALIDATION_MESSAGE } from '@/constants';

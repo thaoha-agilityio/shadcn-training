@@ -1,5 +1,4 @@
-import { Button, Switch } from '@/components/ui';
-import { Input, Typography } from '@/components/common';
+import { Input, Typography, Button, Switch } from '@/components/common';
 
 export const SecurityTab = () => (
   <form className="max-w-full">
