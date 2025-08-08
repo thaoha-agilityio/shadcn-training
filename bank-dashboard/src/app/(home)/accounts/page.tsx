@@ -39,9 +39,7 @@ export const metadata: Metadata = {
 const Accounts = async ({
   searchParams,
 }: {
-  searchParams?: {
-    page?: number;
-  };
+  searchParams?: Promise<{ page: string | string[] | undefined }>;
 }) => {
   // Fetch transactions and card details
   const { data: transactions } = await getTransactionList(1, 3);
@@ -68,7 +66,7 @@ const Accounts = async ({
       label: 'All Transactions',
       content: (
         <Suspense fallback={<TransactionSkeleton />}>
-          <TransactionList cardNumber={cardNumber} currentPage={currentPage} />
+          <TransactionList cardNumber={cardNumber} currentPage={+currentPage} />
         </Suspense>
       ),
     },
